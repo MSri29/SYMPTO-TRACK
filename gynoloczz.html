@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gynecologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🩺 Gynecologist - Symptoms & Treatments</h1>
+        <p>Find information on women's health symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Irregular periods, weight gain, acne</td>
+                <td>Polycystic Ovary Syndrome (PCOS)</td>
+                <td>
+                    <span class="medicine">Metformin (Glucophage)</span> - 500-2000mg/day<br>
+                    <span class="medicine">Combined Oral Contraceptives</span> (Yasmin, Diane-35)<br>
+                    <span class="medicine">Spironolactone (Aldactone)</span> - 50-100mg/day for hirsutism
+                </td>
+            </tr>
+            <tr>
+                <td>Pelvic pain, heavy bleeding, painful intercourse</td>
+                <td>Endometriosis</td>
+                <td>
+                    <span class="medicine">NSAIDs</span> (Ibuprofen 400-600mg every 6-8hrs)<br>
+                    <span class="medicine">Levonorgestrel IUD (Mirena)</span><br>
+                    <span class="medicine">GnRH agonists</span> (Lupron Depot 3.75mg/month)<br>
+                    <span class="medicine">Dienogest (Visanne)</span> - 2mg daily
+                </td>
+            </tr>
+            <tr>
+                <td>Burning sensation, unusual discharge (white/yellow/green)</td>
+                <td>Vaginal Infection</td>
+                <td>
+                    <span class="medicine">Bacterial Vaginosis:</span> Metronidazole (Flagyl) 500mg bid x7d<br>
+                    <span class="medicine">Yeast Infection:</span> Fluconazole (Diflucan) 150mg single dose<br>
+                    <span class="medicine">Trichomoniasis:</span> Tinidazole (Tindamax) 2g single dose
+                </td>
+            </tr>
+            <tr>
+                <td>Frequent urination, burning sensation, cloudy urine</td>
+                <td>Urinary Tract Infection (UTI)</td>
+                <td>
+                    <span class="medicine">Nitrofurantoin (Macrobid)</span> 100mg bid x5d<br>
+                    <span class="medicine">Fosfomycin (Monurol)</span> 3g single dose<br>
+                    <span class="medicine">Ciprofloxacin (Cipro)</span> 250mg bid x3d (if resistant)
+                </td>
+            </tr>
+            <tr>
+                <td>Missed periods, nausea, breast tenderness</td>
+                <td>Pregnancy</td>
+                <td>
+                    <span class="medicine">Prenatal vitamins</span> (Folic acid 400-800mcg daily)<br>
+                    <span class="medicine">Iron supplements</span> (Ferrous sulfate 325mg daily if anemic)<br>
+                    <span class="medicine">Doxylamine+Pyridoxine (Diclegis)</span> for nausea
+                </td>
+            </tr>
+            <tr>
+                <td>Vaginal dryness, hot flashes, night sweats, mood swings</td>
+                <td>Menopause</td>
+                <td>
+                    <span class="medicine">HRT:</span> Estradiol (Climara patch 0.05mg/week) + Medroxyprogesterone (Provera 2.5-5mg/day)<br>
+                    <span class="medicine">Non-hormonal:</span> Paroxetine (Brisdelle) 7.5mg/day for hot flashes<br>
+                    <span class="medicine">Calcium+D3</span> (Caltrate 600mg+800IU daily)
+                </td>
+            </tr>
+            <tr>
+                <td>Painful intercourse, vaginal itching, thinning of vaginal walls</td>
+                <td>Vaginal Atrophy</td>
+                <td>
+                    <span class="medicine">Topical Estrogen:</span> Estradiol cream (Estrace) 2-4g daily x2w then 1g 3x/wk<br>
+                    <span class="medicine">Vaginal Moisturizer:</span> Replens 3x/wk<br>
+                    <span class="medicine">Ospemifene (Osphena)</span> 60mg daily for dyspareunia
+                </td>
+            </tr>
+            <tr>
+                <td>Heavy periods, pelvic pressure, frequent urination</td>
+                <td>Uterine Fibroids</td>
+                <td>
+                    <span class="medicine">Tranexamic acid (Lysteda)</span> 1300mg tid during menses<br>
+                    <span class="medicine">Leuprolide (Lupron)</span> 3.75mg IM monthly to shrink fibroids<br>
+                    <span class="medicine">Ulipristal (Esmya)</span> 5mg daily for 3 months
+                </td>
+            </tr>
+            <tr>
+                <td>Pelvic pressure, urinary incontinence, bulge sensation</td>
+                <td>Pelvic Organ Prolapse</td>
+                <td>
+                    <span class="medicine">Local Estrogen:</span> Vaginal estriol cream (Ovestin) for tissue health<br>
+                    <span class="medicine">Pessary devices:</span> Ring, Gellhorn, or Cube pessaries fitted by MD<br>
+                    <span class="medicine">Surgery:</span> Sacrocolpopexy or vaginal repair if severe
+                </td>
+            </tr>
+            <tr>
+                <td>Foul-smelling discharge, fever, lower abdominal pain</td>
+                <td>Pelvic Inflammatory Disease (PID)</td>
+                <td>
+                    <span class="medicine">Ceftriaxone 250mg IM single dose + Doxycycline 100mg bid x14d + Metronidazole 500mg bid x14d</span><br>
+                    <span class="medicine">Alternative:</span> Cefoxitin 2g IM + Probenecid 1g PO single dose
+                </td>
+            </tr>
+            <tr>
+                <td>Severe menstrual cramps, lower back pain, nausea</td>
+                <td>Dysmenorrhea</td>
+                <td>
+                    <span class="medicine">NSAIDs:</span> Mefenamic acid (Ponstan) 500mg tid or Naproxen (Aleve) 500mg bid<br>
+                    <span class="medicine">Hormonal:</span> Drospirenone/EE (Yaz) or Levonorgestrel IUD (Mirena)<br>
+                    <span class="medicine">TENS unit</span> for pain relief
+                </td>
+            </tr>
+            <tr>
+                <td>Irregular bleeding after menopause, thickened endometrium</td>
+                <td>Endometrial Hyperplasia</td>
+                <td>
+                    <span class="medicine">Progestins:</span> Medroxyprogesterone (Provera) 10mg daily x14d/cycle<br>
+                    <span class="medicine">Levonorgestrel IUD (Mirena)</span> for 5 years<br>
+                    <span class="medicine">Megestrol (Megace)</span> 40-160mg daily for complex hyperplasia
+                </td>
+            </tr>
+            <tr>
+                <td>Flesh-colored genital warts, itching, discomfort</td>
+                <td>Genital Warts (HPV)</td>
+                <td>
+                    <span class="medicine">Topical:</span> Imiquimod (Aldara) 5% cream 3x/wk x16w<br>
+                    <span class="medicine">Podophyllotoxin (Condyline)</span> 0.5% solution bid x3d/wk x4w<br>
+                    <span class="medicine">HPV Vaccine:</span> Gardasil-9 (if not previously vaccinated)
+                </td>
+            </tr>
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>💉 <strong>Vaccination:</strong> HPV vaccine (Gardasil-9) recommended ages 9-45</li>
+                <li>🩺 <strong>Screening:</strong> Pap smear every 3-5 years (start at age 21)</li>
+                <li>🧴 <strong>Hygiene:</strong> Wipe front-to-back, avoid douching</li>
+                <li>💊 <strong>Supplements:</strong> Folic acid 400mcg daily for reproductive-age women</li>
+                <li>🚭 <strong>Lifestyle:</strong> Smoking cessation reduces cervical cancer risk by 50%</li>
+                <li>🏋‍♀ <strong>Exercise:</strong> Kegel exercises daily for pelvic floor strength</li>
+                <li>🥛 <strong>Nutrition:</strong> Calcium 1200mg + Vitamin D 800IU daily for bone health</li>
+                <li>🛌 <strong>Sleep:</strong> 7-9 hours nightly to regulate reproductive hormones</li>
+                <li>🧘 <strong>Stress Management:</strong> Yoga/meditation to reduce PMS symptoms</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

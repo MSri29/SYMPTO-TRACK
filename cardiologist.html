@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>❤️ Cardiologist - Symptoms & Treatments</h1>
+        <p>Find information on heart-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Shortness of breath with activity or when lying down,
+ Fatigue and weakness,
+ Reduced ability to do exercise,
+ Swelling in the legs , ankles and feet,
+Cnest pain in heart failure is caused by a heart attack </td>
+                <td>Heart failure </td>
+                <td>ACE inhibitors, 
+ angiotensin-2 receptor blockers (ARBs or AIIRAs),
+ beta blockers,
+mineralocorticoid receptor antagonists,
+diuretics,
+ivabradine.</td>
+            </tr>
+   <tr>
+                <td> a blue tinge to the skin or lips (cyanosis),
+ rapid breathing,
+ rapid heartbeat,
+swelling in the legs, tummy and around the eyes </td>
+                <td> Congenital heart disease </td>
+                <td>digoxin (Lanoxin®) and Lasix® (furosemide)
+ </td>
+            </tr>
+   <tr>
+                <td> A burning or aching pain in your feet and toes while resting, especially at night while lying flat,
+ Cool skin on your feet,
+Redness or other color changes of your skin,
+ More frequent skin and soft tissue infections (usually in your feet or legs).</td>
+                <td>Peripheral artery disease </td>
+                <td>Antiplatelet medicines, such as aspirin or clopidogrel, 
+  </td>
+            </tr>
+   <tr>
+                <td>classic' chest pain, and pain in the jaw, neck, back or tummy </td>
+                <td> Angina</td>
+                <td>nitroglycerin</td>
+            </tr>
+   <tr>
+                <td>Pain and tenderness of the chest, upper back or abdomen,
+ Loss of consciousness,
+ Rapid, weak pulse </td>
+                <td>Aortic disease </td>
+                <td>Medicine: beta-blockers and calcium channel blockers or diuretics.
+  </td>
+            </tr>
+   <tr>
+                <td> Sudden shortness of breath (most common),
+Chest pain (usually worse with breathing),
+ A feeling of anxiety,
+ A feeling of dizziness, lightheadedness, or fainting,
+ Irregular heartbeat,
+Palpitations (heart racing),
+ Coughing and/or coughing up blood,
+ Sweating. </td>
+                <td> Pulmonary embolism</td>
+                <td> Anticoagulant Medication</td>
+            </tr>
+   <tr>
+                <td> heart problems, medicines and problems with your thyroid gland. </td>
+                <td> Bradycardia </td>
+                <td>atropine, which is the first-line drug treatment for bradycardia,
+ dopamine,
+ epinephrine,
+ glycopyrrolate</td>
+            </tr>
+  
+   <tr>
+                <td>slow or irregular heartbeat or notice pauses between heartbeats. You may also feel like your heart is skipping a beat, fluttering, pounding, or beating too hard or too fast. These are called heart palpitations. </td>
+                <td>Arrhythmia</td>
+                <td>Flecainide, sotalol (also a beta blocker) and amiodarone 
+  </td>
+            </tr>
+   <tr>
+                <td>Chest pain,
+ Palpitations caused by irregular heartbeats,
+ Fatigue,
+ Dizziness,
+Low or high blood pressure, depending on which valve disease is present,
+Shortness of breath.</td>
+                <td>Heart valve disease </td>
+                <td> Statins,
+Bisphosphonates,
+ ACEIs/ARBs,
+ Aortic regurgitation (Table 1) ,
+ Vasodilators,
+ Beta blockers </td>
+            </tr>
+   <tr>
+                <td>Numbness, weakness or paralysis in the face, arm or leg,
+ Problems seeing in one or both eyes,
+ Headache,
+ Trouble walking.</td>
+                <td>Stroke </td>
+                <td>tissue plasminogen activator (tPA).
+  </td>
+            </tr>
+   <tr>
+                <td>severe headaches,
+chest pain,
+dizziness,
+difficulty breathing,
+nausea,
+ vomiting,
+ blurred vision or other vision changes,
+ anxiety,
+  </td>
+                <td>High blood pressure </td>
+                <td>ACE inhibitors,
+Angiotensin receptor blockers (ARBs),
+Calcium-channel blockers,
+Diuretics,
+ Alpha-blockers (Doxazocin),
+ Beta-blockers,
+ </td>
+            </tr>
+   <tr>
+                <td>• chest pain,
+pain in your arms and legs, especially when exercising,
+ feeling short of breath,
+ feeling tired all the time,
+ feeling weak,
+ feeling confuse</td>
+                <td>Atherosclerosis </td>
+                <td> Antiplatelet medicines</td>
+            </tr>
+   <tr>
+                <td> Fever,
+ Joint pain or swelling — most often the knees, ankles, elbows and wrists. Joints may feel hot or tender,
+ Pain in one joint that travels to another joint,
+ Chest pain,
+ Fatigue,
+Small, painless bumps beneath the skin.
+ </td>
+                <td> Rheumatic fever</td>
+                <td>Aspirin or naproxen (Naprosyn, Naprelan, Anaprox DS </td>
+            </tr>
+   <tr>
+                <td> Fatigue.
+ Dizziness,
+Shortness of breath,
+ Nausea,
+ Chest pain,
+ </td>
+                <td>Cardiac arrest </td>
+                <td>  Beta blockers,
+ Angiotensin-converting enzyme (ACE) inhibitors,
+Calcium channel blockers. </td>
+            </tr>
+   <tr>
+                <td>Chest pain that may feel like pressure, tightness, squeezing or aching.
+Pain or discomfort that spreads to the shoulder, arm, back, neck, jaw, teeth or sometimes the upper belly,
+Cold sweats,
+Fatigue,
+ Heartburn,
+ Nausea,
+ Shortness of breath. </td>
+                <td>Coronary heart disease </td>
+                <td>  Cholesterol medicine,
+Aspirin,
+Beta blockers,
+Calcium channel blockers,
+Angiotensin-converting enzyme (ACE) inhibitors and angiotensin 2 receptor blockers (ARBs), Nitroglycerin. ...
+ </td>
+            </tr>
+   <tr>
+                <td> Shortness of breath or trouble breathing, especially with physical exertion,
+Fatigue or tiredness even after resting,
+ Swelling in the ankles, feet, legs, abdomen and veins in the neck,
+ Dizziness,
+ Fainting,
+Arrhythmias (abnormal heartbeats)
+ </td>
+                <td>Cardiomyopathy</td>
+                <td>Diuretics, ACE inhibitors, Digoxin,
+ anticoagulants,
+ </td>
+            </tr>
+   <tr>
+                <td> Pain in your back, neck or left shoulder Trouble breathing when you lie down,A dry cough,
+Palpitations (feeling like your heart is racing or beating irregularly),
+Anxiety or fatigue,
+ Fever,
+ Swelling of your legs, feet and ankles in severe cases.
+  </td>
+                <td> Pericarditis </td>
+                <td> oral non-steroidal anti-inflammatory medications (such as ibuprofen or high-dose aspirin) </td>
+            </tr>
+   <tr>
+                <td>Aching joints and muscles,
+Chest pain when you breathe,
+Fatigue,
+Flu-like symptoms, such as fever and chills,
+Night sweats,
+ Shortness of breath,
+ Swelling in the feet, legs or belly,
+A new or changed whooshing sound in the heart (murmur)
+  </td>
+                <td>Endocarditis </td>
+                <td>penicillin G and gentamicin </td>
+            </tr>
+   <tr>
+                <td> Extreme fatigue,
+An irregular heartbeat,
+ Heart palpitations,
+ A feeling of butterflies or a fish flopping in your chest,
+ Dizziness or lightheadedness,
+ Fainting (syncope).
+ </td>
+                <td>Atrial fibrillation </td>
+                <td>beta blockers </td>
+            </tr>
+   <tr>
+                <td>balance  issues, vision loss, headaches and difficulty speaking.
+  </td>
+                <td>Cerebrovascular </td>
+                <td> Uridine,
+ vinpocetine
+ </td>
+            </tr>
+  
+            
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>❤ Maintain a healthy diet with low cholesterol and low salt.</li>
+                <li>🏃‍♂ Exercise regularly (at least 30 minutes a day).</li>
+                <li>🚭 Avoid smoking and excessive alcohol consumption.</li>
+                <li>🩺 Get regular check-ups and monitor blood pressure.</li>
+                <li>🍏 Manage stress through meditation, yoga, or deep breathing.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

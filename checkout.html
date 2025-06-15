@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout | Sympto Track</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      width: 100%;
+      background-color: #35346f;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #178947;
+    }
+
+    .order-summary {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 2rem; /* Increased margin */
+      border-radius: 8px;
+    }
+
+    .order-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .order-summary li, .order-summary-line {
+      padding: 8px 0; /* Increased padding */
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+    .order-summary li:last-child, .order-summary-line:last-of-type {
+        border-bottom: none;
+    }
+
+    .order-summary-total {
+      font-weight: bold;
+      font-size: 1.2rem;/
+      padding-top: 10px;
+      margin-top: 10px; /* Added margin */
+      display: flex;
+      justify-content: space-between;
+      border-top: 2px solid #3498db; /* Accent border */
+      color: #2c3e50;
+    }
+
+    .confirmation {
+      text-align: center;
+      margin-top: 2rem;
+      display: none; /* Hidden by default */
+      padding: 20px;
+      background-color: #e8f5e9; /* Light green background */
+      border-left: 5px solid #961096;
+      border-radius: 5px;
+    }
+
+    .confirmation h2 {
+      color: #5c2aad;
+    }
+    .confirmation.cod h2 { /* Specific styling for COD confirmation */
+        color: #3498db; /* A different color for "Order Placed" */
+    }
+    .confirmation.cod {
+        border-left-color: #3498db;
+    }
+
+
+    .confirmation p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    #upiField, #cardFields {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+    }
+
+    #upiField img {
+      max-width: 150px;
+      margin-top: 10px;
+      display: block;
+      border: 1px solid #bdc3c7;
+      border-radius: 4px;
+    }
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .container {
+        box-shadow: none;
+        max-width: 100%;
+        padding: 10px; /* Add some padding for print */
+      }
+      #checkoutForm, .btn:not(.confirmation .btn) /* Hide form and non-confirmation buttons */ {
+        display: none;
+      }
+      .confirmation, .order-summary {
+        display: block !important; /* Ensure it's visible for printing */
+        background-color: white;
+        border-left: none;
+        box-shadow: none;
+        border: 1px solid #ccc; /* Add a light border for printed receipt */
+        padding: 10px;
+        margin-bottom: 1rem;
+      }
+      .order-summary h2, .confirmation h2 {
+        font-size: 1.2em; /* Adjust font sizes for print */
+      }
+      .confirmation p, .order-summary li, .order-summary-line, .order-summary-total {
+        font-size: 0.9em;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+      /* Hide QR code image on print as it's not relevant for a receipt */
+      #upiField img {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout</h1>
+
+    <div class="order-summary" id="orderSummary">
+      <h2>Order Summary</h2>
+      <ul id="orderList">
+        <!-- Items will be populated by JavaScript -->
+      </ul>
+      <div class="order-summary-line">
+        <span>Subtotal:</span>
+        <span id="subtotalAmount">₹0.00</span>
+      </div>
+      <div class="order-summary-line" id="discountLine" style="display:none;">
+        <span>Discount:</span>
+        <span id="discountAmount" style="color: green;">- ₹0.00</span>
+      </div>
+      <div class="order-summary-line">
+        <span>Shipping Fee:</span>
+        <span id="shippingFee">₹50.00</span>
+      </div>
+      <div class="order-summary-total">
+        <span>Total Amount:</span>
+        <span id="totalAmount">₹0.00</span>
+      </div>
+    </div>
+
+    <form id="checkoutForm">
+      <h2>Shipping Information</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="address">Delivery Address</label>
+      <input type="text" id="address" name="address" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required />
+
+      <h2>Payment Details</h2>
+      <label for="payment">Payment Method</label>
+      <select id="payment" name="payment" required>
+        <option value="">--Select Payment Method--</option>
+        <option value="upi">UPI</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <div id="upiField" style="display: none;">
+        <label for="upiId">Enter UPI ID</label>
+        <input type="text" id="upiId" name="upiId" placeholder="example@bank" />
+             </div>
+
+      <div id="cardFields" style="display: none;">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName" name="cardName" placeholder="John Doe" />
+
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" />
+
+        <label for="expiryDate">Expiry Date (MM/YY)</label>
+        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" />
+
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" />
+      </div>
+
+      <button type="submit" class="btn" id="payButton">Confirm & Pay</button>
+    </form>
+
+    <div class="confirmation" id="confirmation">
+      <h2 id="confirmationTitle"></h2>
+      <p>Your order ID is <strong id="orderId"></strong></p>
+      <p>Estimated Delivery Date: <strong id="deliveryDate"></strong></p>
+      <p>Thank you for ordering with Sympto Track.</p>
+      <button class="btn" onclick="printReceipt()">🖨️ Print Receipt</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("checkoutForm");
+    const confirmationDiv = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmationTitle");
+    const orderIdField = document.getElementById("orderId");
+    const deliveryDateField = document.getElementById("deliveryDate");
+
+    const orderList = document.getElementById("orderList");
+    const subtotalAmountEl = document.getElementById("subtotalAmount");
+    const discountLineEl = document.getElementById("discountLine");
+    const discountAmountEl = document.getElementById("discountAmount");
+    const shippingFeeEl = document.getElementById("shippingFee");
+    const totalAmountEl = document.getElementById("totalAmount");
+
+    const paymentMethodSelect = document.getElementById("payment");
+    const upiField = document.getElementById("upiField");
+    const upiInput = document.getElementById("upiId");
+    const cardFields = document.getElementById("cardFields");
+    const cardNameInput = document.getElementById("cardName");
+    const cardNumberInput = document.getElementById("cardNumber");
+    const expiryDateInput = document.getElementById("expiryDate");
+    const cvvInput = document.getElementById("cvv");
+    const payButton = document.getElementById("payButton");
+
+
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const SHIPPING_FEE = 50;
+
+    function loadOrderSummary() {
+      let subtotal = 0;
+      let totalDiscount = 0;
+      orderList.innerHTML = "";
+
+      cartItems.forEach(item => {
+        let itemPriceWithoutDiscount = item.price * item.quantity;
+        let itemDiscount = 0;
+
+        if (item.quantity >= 20) { // New 20% discount tier
+          itemDiscount = itemPriceWithoutDiscount * 0.20; 
+        } else if (item.quantity >= 10) {
+          itemDiscount = itemPriceWithoutDiscount * 0.10; // 10% off
+        } else if (item.quantity >= 3) {
+          itemDiscount = itemPriceWithoutDiscount * 0.05; // 5% off
+        }
+        
+        totalDiscount += itemDiscount;
+        subtotal += itemPriceWithoutDiscount;
+
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${item.name} (x${item.quantity})</span><span>₹${itemPriceWithoutDiscount.toFixed(2)}</span>`;
+        orderList.appendChild(li);
+      });
+
+      subtotalAmountEl.textContent = `₹${subtotal.toFixed(2)}`;
+      
+      if (totalDiscount > 0) {
+        discountAmountEl.textContent = `- ₹${totalDiscount.toFixed(2)}`;
+        discountLineEl.style.display = "flex";
+      } else {
+        discountLineEl.style.display = "none";
+      }
+      
+      shippingFeeEl.textContent = `₹${SHIPPING_FEE.toFixed(2)}`;
+      const finalTotal = subtotal - totalDiscount + SHIPPING_FEE;
+      totalAmountEl.textContent = `₹${finalTotal.toFixed(2)}`;
+    }
+
+    function calculateDeliveryDate() {
+      const today = new Date();
+      const deliveryDate = new Date(today);
+      deliveryDate.setDate(today.getDate() + 3 + Math.floor(Math.random() * 3)); // 3-5 days
+      return deliveryDate.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    paymentMethodSelect.addEventListener("change", () => {
+      upiField.style.display = "none";
+      cardFields.style.display = "none";
+      upiInput.required = false;
+      cardNameInput.required = false;
+      cardNumberInput.required = false;
+      expiryDateInput.required = false;
+      cvvInput.required = false;
+
+      if (paymentMethodSelect.value === "upi") {
+        upiField.style.display = "block";
+        upiInput.required = true;
+        payButton.textContent = "Confirm & Pay";
+      } else if (paymentMethodSelect.value === "card") {
+        cardFields.style.display = "block";
+        cardNameInput.required = true;
+        cardNumberInput.required = true;
+        expiryDateInput.required = true;
+        cvvInput.required = true;
+        payButton.textContent = "Confirm & Pay";
+      } else if (paymentMethodSelect.value === "cod") {
+        payButton.textContent = "Place Order";
+      } else {
+        payButton.textContent = "Confirm & Pay"; // Default
+      }
+    });
+
+    cardNumberInput.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); 
+        let formattedValue = '';
+        for (let i = 0; i < value.length; i++) {
+            if (i > 0 && i % 4 === 0) {
+                formattedValue += ' ';
+            }
+            formattedValue += value[i];
+        }
+        e.target.value = formattedValue;
+    });
+
+    expiryDateInput.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+    });
+
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let isValid = true;
+
+      document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+      function displayError(fieldId, message) {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            const errorEl = document.createElement('dv');
+            errorEl.className = 'error-message';
+            errorEl.textContent = message;
+            field.parentNode.insertBefore(errorEl, field.nextSibling);
+          }
+          isValid = false;
+      }
+
+
+      if (paymentMethodSelect.value === "upi") {
+        const upiRegex = /^[\w.-]+@[\w.-]+$/; 
+        if (!upiRegex.test(upiInput.value.trim())) {
+          displayError("upiId", "Please enter a valid UPI ID (e.g., yourname@bank).");
+        }
+      } else if (paymentMethodSelect.value === "card") {
+        const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+        const expiryDate = expiryDateInput.value;
+        const cvv = cvvInput.value;
+
+        if (cardNameInput.value.trim().length < 2) {
+            displayError("cardName", "Cardholder name is required.");
+        }
+        if (!/^\d{16}$/.test(cardNumber)) {
+          displayError("cardNumber", "Card number must be 16 digits.");
+        }
+        
+        const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+        if (!expiryRegex.test(expiryDate)) {
+          displayError("expiryDate", "Expiry date must be in MM/YY format.");
+        } else {
+          const [month, year] = expiryDate.split('/');
+          const expiry = new Date(parseInt(`20${year}`), parseInt(month) -1); 
+          const today = new Date();
+          today.setHours(0,0,0,0); 
+          const lastDayOfExpiryMonth = new Date(expiry.getFullYear(), expiry.getMonth() + 1, 0);
+
+          if (lastDayOfExpiryMonth < today) {
+            displayError("expiryDate", "Card has expired.");
+          }
+        }
+        if (!/^\d{3}$/.test(cvv)) {
+          displayError("cvv", "CVV must be 3 digits.");
+        }
+      }
+
+      if (!isValid) {
+          return;
+      }
+      
+      payButton.textContent = "Processing...";
+      payButton.disabled = true;
+
+      setTimeout(() => {
+        const orderId = "SYM" + Math.floor(Math.random() * 1000000);
+        form.style.display = "none";
+        // Keep orderSummary visible for print, but we can hide the form h2
+        const shippingInfoHeading = form.querySelector('h2');
+        if (shippingInfoHeading) shippingInfoHeading.style.display = "none";
+        const paymentDetailsHeading = form.querySelectorAll('h2')[1];
+        if (paymentDetailsHeading) paymentDetailsHeading.style.display = "none";
+
+
+        confirmationDiv.style.display = "block";
+        
+        if (paymentMethodSelect.value === "cod") {
+            confirmationTitle.textContent = "🎉 Order Successfully Placed!";
+            confirmationDiv.classList.add("cod");
+        } else {
+            confirmationTitle.textContent = "✅ Order and Payment Successful!";
+            confirmationDiv.classList.remove("cod"); // Ensure COD class is removed if not COD
+        }
+
+        orderIdField.textContent = orderId;
+        deliveryDateField.textContent = calculateDeliveryDate();
+
+        localStorage.removeItem("cartItems");
+        localStorage.setItem("cartCount", "0");
+      }, 1500);
+    });
+
+    function printReceipt() {
+        // Ensure order summary is visible for printing even if form was submitted
+        document.getElementById("orderSummary").style.display = "block";
+        window.print();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadOrderSummary();
+      if (cartItems.length === 0) {
+          alert("Your cart is empty. Please add items to your cart before proceeding to checkout.");
+          window.location.href = 'medicine.html'; 
+      }
+       // Trigger change event to set initial button text if a payment method might be pre-selected by browser
+      paymentMethodSelect.dispatchEvent(new Event('change'));
+    });
+  </script>
+</body>
+</html>

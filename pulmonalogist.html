@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmonologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🫁 Pulmonologist - Symptoms & Treatments</h1>
+        <p>Find information on lung-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Chronic cough, breathlessness</td>
+                <td>Asthma</td>
+                <td>Inhalers, Bronchodilators</td>
+            </tr>
+            <tr>
+                <td>Chest pain, high fever</td>
+                <td>Pneumonia</td>
+                <td>Antibiotics, Cough suppressants</td>
+            </tr>
+            <tr>
+                <td>Persistent cough, weight loss</td>
+                <td>Tuberculosis</td>
+                <td>Anti-TB medication (Rifampin, Isoniazid)</td>
+            </tr>
+            <tr>
+                <td>Wheezing, shortness of breath</td>
+                <td>Chronic Obstructive Pulmonary Disease (COPD)</td>
+                <td>Bronchodilators, Steroids</td>
+            </tr>
+            <tr>
+                <td>fatigue, rapid heart rate, chest tightness, abnormal breathing, bluish color of skin</td>
+                <td>Pneumothorax or atelectasis</td>
+                <td>Albuterol (Proventil, Ventolin)</td>
+            </tr>
+            <tr>
+                <td>cough, breathlessness, chest or shoulder pain, chest infection, spitting up blood</td>
+                <td>Lung cancer</td>
+                <td>cisplatin, carboplatin, pemetrexed, paclitaxel, docetaxel, gemcitabine, and vinorelbine</td>
+            </tr>
+            <tr>
+                <td>difficulty breathing, rapid irregular heartbeat, suffocating,cough</td>
+                <td>Pulmonary  edema</td>
+                <td>furosemide (Lasix)</td>
+            </tr>
+            <tr>
+                <td>cough, shortness of breath, fatigue, fever, chest pain</td>
+                <td>Bronchiectasis</td>
+                <td>Antibiotics,Brensocatib</td>
+            </tr>
+            <tr>
+                <td>slight fever, ill feeling, wheezing</td>
+                <td>Bronchitis</td>
+                <td>Nonsteroidal anti-inflammatory drugs (NSAIDs), such as ibuprofen, naproxen, or aspirin. Acetaminophen (Tylenol)</td>
+            </tr>
+            <tr>
+                <td>short of breath, dry cough, being tired, losing weight, aching joints</td>
+                <td>Pulmonary fibrosis</td>
+                <td>nintedanib (Ofev®) and pirfenidone (Esbriet®)</td>
+            </tr>
+            <tr>
+                <td>skin rashes or raised bumps on the skin, joint pain or stiffness, eye irritation or dryness of the eyes and blurry vision</td>
+                <td>Sarcoidosis</td>
+                <td> Corticosteroids</td>
+            </tr>
+            <tr>
+                <td>fever, fatigue and aches. Later symptoms include trouble breathing and a rapid heartbeat</td>
+                <td>Hantavirus pulmonary syndrome</td>
+                <td>antiviral drugs, such as ribavirin</td>
+            </tr>
+            <tr>
+                <td>cold-like symptoms like a runny nose, sneezing, and mild cough, but progresses to severe coughing fits, sometimes ending with a "whoop" sound when inhaling. </td>
+                <td>Pertussis(whooping cough)</td>
+                <td>Macrolides (erythromycin, clarithromycin, and azithromycin)</td>
+            </tr>
+            <tr>
+                <td>fever, severe ciugh, wheezing, rapid breathing</td>
+                <td>Respiratory syncytial virus(RSV)</td>
+                <td>RSV prophylaxis with palivizumab</td>
+            </tr>
+            <tr>
+                <td>loud snoring, awakening with a dry mouth, morning headche</td>
+                <td>Sleep apnea</td>
+                <td>Zepbound (tirzepatide)</td>
+            </tr>
+            <tr>
+                <td>Biologic drugs,Treatment for GERD,Pulmonary rehabilitation,Oxygen therapy,Lung transplant</td>
+                <td>Interstitial lung disease(ILD)</td>
+                <td>Mycophenolate mofetil (CellCept®) or mycophenolic acid (Myfortic®),Azathioprine (Imuran®),Cyclophosphamide (Cytoxan®),Rituximab (Rituxan®)</td>
+            </tr>
+            <tr>
+                <td>fever, cough, chills, headache, sore throat, body aches</td>
+                <td>Influenza(flu)</td>
+                <td>oseltamivir phosphate,zanamivir,peramivir, baloxavir marboxil </td>
+            </tr>
+            <tr>
+                <td>Loose or oily poop (stool),Trouble breathing,Frequent wheezing,Frequent sinus infections,A nagging cough.</td>
+                <td>Cystic fibrosis</td>
+                <td>Creon,Pancreaze®,Zenpep®</td>
+            </tr>
+        </table>
+
+        <h2>🛡️ Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🚭 Quit smoking to reduce lung damage.</li>
+                <li>💨 Avoid air pollution and allergens to prevent respiratory issues.</li>
+                <li>🏃 Engage in regular exercise to strengthen lung function.</li>
+                <li>💉 Get vaccinated against pneumonia and flu for lung protection.</li>
+                <li>🥦 Maintain a healthy diet rich in antioxidants for lung health.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

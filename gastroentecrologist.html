@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastroenterologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3; /* Teal Theme */
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🦠 Gastroenterologist - Symptoms & Treatments</h1>
+        <p>Find information on digestive system symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td> Stomach pain, nausea, vomiting, bloating, loss of appetite, indigestion. </td>
+                <td>Gastritis </td>
+                <td>     Proton Pump Inhibitors (PPIs): Omeprazole, Esomeprazole (reduce stomach acid),
+     Antibiotics (for H. pylori infection): Amoxicillin, Clarithromycin,
+     Antacids: Magnesium hydroxide, Calcium carbonate (help neutralize stomach acid),
+     H2 blockers: Ranitidine, Famotidine (reduce stomach acid production) </td>
+            </tr>
+<tr>
+                <td>Heartburn, regurgitation of food or sour liquid, difficulty swallowing, chest pain, sore throat. </td>
+                <td>Gastroesophageal Reflux Disease (GERD)</td>
+                <td> Proton Pump Inhibitors (PPIs): Omeprazole, Pantoprazole (reduce acid production),
+    H2 blockers: Famotidine, Ranitidine (block acid production),
+    Antacids: Tums, Mylanta (neutralize stomach acid),
+    Prokinetics: Metoclopramide (improves stomach emptying)
+ </td>
+            </tr>
+<tr>
+                <td> Burning stomach pain, nausea, bloating, indigestion, vomiting.</td>
+                <td>Peptic Ulcers</td>
+                <td>     Proton Pump Inhibitors (PPIs): Lansoprazole, Omeprazole (help heal the ulcer),
+    Antibiotics: Amoxicillin, Clarithromycin, Metronidazole (treat H. pylori infection),
+    Antacids: Magnesium hydroxide, Calcium carbonate (reduce acid and soothe pain),
+    H2 blockers: Ranitidine, Famotidine (reduce stomach acid) </td>
+            </tr>
+<tr>
+                <td>Unexplained weight loss, stomach pain, nausea, vomiting, loss of appetite, indigestion.</td>
+                <td>Stomach Cancer (Gastric Cancer)</td>
+                <td>     Chemotherapy: Fluorouracil, Cisplatin (to treat cancer),
+     Targeted therapies: Trastuzumab (if HER2 positive),
+    Pain relievers: Acetaminophen, Opioids (for pain relief),
+    Radiation therapy: Used to shrink tumors or relieve symptoms
+</td>
+            </tr>
+<tr>
+                <td>Nausea, vomiting, bloating, feeling full after eating a small amount, weight loss. </td>
+                <td>Gastroparesis </td>
+                <td>     Prokinetics: Metoclopramide, Domperidone (help the stomach empty faster),
+     Antiemetics: Ondansetron (for nausea and vomiting),
+     Antacids: Calcium carbonate (to reduce acid and heartburn) </td>
+            </tr>
+<tr>
+                <td> Abdominal pain, bloating, diarrhea, constipation, changes in bowel habits. </td>
+                <td> Irritable Bowel Syndrome (IBS) </td>
+                <td>    Antispasmodics: Dicyclomine, Hyoscine (for abdominal pain and cramping),
+    Antidiarrheals: Loperamide (for diarrhea),
+    Laxatives: Polyethylene glycol (for constipation),
+    Fiber supplements: Psyllium (to help regulate bowel movements),
+    Probiotics: Lactobacillus (help balance gut bacteria)</td>
+            </tr>
+<tr>
+                <td>Diarrhea, vomiting, stomach cramps, fever, nausea.</td>
+                <td> Gastroenteritis</td>
+                <td>    Antiemetics: Ondansetron, Promethazine (for nausea and vomiting),
+     Antidiarrheals: Loperamide (for diarrhea),
+     Rehydration solutions: Oral rehydration salts (to prevent dehydration),
+     Antibiotics (if bacterial infection is present): Ciprofloxacin, Azithromycin
+</td>
+            </tr>
+<tr>
+                <td>Heartburn, chest pain, regurgitation, difficulty swallowing.</td>
+                <td>Hiatal Hernia </td>
+                <td>    Proton Pump Inhibitors (PPIs): Omeprazole, Esomeprazole (to control acid reflux),
+     Antacids: Tums, Mylanta (to neutralize stomach acid),
+     H2 blockers: Ranitidine, Famotidine (to reduce acid production) </td>
+            </tr>
+<tr>
+                <td>Diarrhea, abdominal pain, bloating, weight loss, fatigue. </td>
+                <td>Celiac Disease </td>
+                <td>    Gluten-free diet: Strict avoidance of gluten (primary treatment),
+    Corticosteroids: Prednisone (for inflammation),
+     Enzyme supplements: Digestive enzymes (to help with digestion)
+ </td>
+            </tr>
+<tr>
+                <td> Bloating, diarrhea, gas, stomach cramps. </td>
+                <td>  Lactose Intolerance</td>
+                <td>     Lactase supplements: Lactaid (to help digest lactose),
+     Antidiarrheals: Loperamide (for diarrhea),
+     Probiotics: Lactobacillus (help improve digestion)
+ </td>
+            </tr>
+           
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🥗 Eat a fiber-rich diet for better digestion.</li>
+                <li>🚰 Stay hydrated and drink plenty of water.</li>
+                <li>🍟 Avoid excessive fatty and spicy foods.</li>
+                <li>🚭 Reduce alcohol consumption and avoid smoking.</li>
+                <li>🏃 Engage in regular physical activity.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

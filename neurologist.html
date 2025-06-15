@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🧠 Neurologist - Symptoms & Treatments</h1>
+        <p>Find information on brain and nervous system symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Memory loss, confusion, difficulty with speech and decision-making, mood changes.</td>
+                <td>Alzheimer</td>
+                <td>Donepezil, Rivastigmine, Galantamine (cholinesterase inhibitors), Memantine (NMDA antagonist).
+</td>
+            </tr>
+            <tr>
+                <td>Seizures (generalized, focal), loss of consciousness, muscle spasms, confusion after seizures.</td>
+                <td>Epilepsy</td>
+                <td>Valproic acid, Lamotrigine, Phenytoin, Levetiracetam.</td>
+            </tr>
+            <tr>
+                <td>Headaches, nausea, vomiting, vision problems, seizures, cognitive changes.</td>
+                <td>Brain Tumor</td>
+                <td>Dexamethasone (steroid for swelling), Temozolomide (chemotherapy), Anticonvulsants (for seizures).
+</td>
+            </tr>
+            <tr>
+                <td>Severe, throbbing headache, nausea, sensitivity to light/sound, aura (visual disturbances). </td>
+                <td>Migraine</td>
+                <td> Sumatriptan, Ibuprofen, Ergotamine, Beta-blockers (for prevention), Antiemetics (for nausea).
+</td>
+            </tr>
+              <tr>
+                <td> Muscle weakness, difficulty speaking/swallowing, spasticity, paralysis.</td>
+                <td>Amyotrophic Lateral Sclerosis (ALS) </td>
+                <td> Riluzole, Edaravone (helps slow progression).
+</td>
+            </tr>
+          <tr>
+                <td> Memory loss, confusion, difficulty concentrating, changes in mood, personality.</td>
+                <td> Dementia</td>
+                <td>Donepezil, Rivastigmine, Galantamine, Memantine.
+</td>
+            </tr>
+          <tr>
+                <td>Tremors, rigidity, bradykinesia (slowness of movement), balance issues. </td>
+                <td>Parkinson's Disease </td>
+                <td> Levodopa, Carbidopa, Dopamine agonists (Pramipexole), MAO-B inhibitors (Selegiline).
+</td>
+            </tr>
+              <tr>
+                <td> Involuntary movements (chorea), mood changes, difficulty with speech and swallowing, cognitive decline.</td>
+                <td>Huntington's Disease </td>
+                <td> Tetrabenazine (for chorea), Antidepressants (SSRIs), Antipsychotics.</td>
+            </tr>
+            <tr>
+                <td>Numbness, vision problems, muscle weakness, difficulty with coordination, fatigue.</td>
+                <td>Multiple Sclerosis (MS)</td>
+                <td>Disease-modifying therapies (e.g., Interferon beta, Glatiramer acetate), Corticosteroids for flare-ups.</td>
+            </tr>
+            <tr>
+                <td>Varies by condition, but may include memory loss, tremors, motor difficulties, and cognitive decline. </td>
+                <td>Neurodegenerative Disease </td>
+                <td>Disease-specific drugs like those listed for Alzheimer's, Parkinson's, etc.</td>
+            </tr>
+          <tr>
+                <td> Sudden weakness/numbness (especially on one side), speech difficulty, vision changes, confusion. </td>
+                <td>Stroke </td>
+                <td>Thrombolytics (e.g., Alteplase for ischemic stroke), Antiplatelets (e.g., Aspirin), Anticoagulants.</td>
+            </tr>
+         <tr>
+                <td>Headache, dizziness, memory loss, nausea, changes in mood, loss of consciousness.</td>
+                <td>Traumatic Brain Injury (TBI)</td>
+                <td>Pain relievers (e.g., Acetaminophen, Ibuprofen), Anticonvulsants (for seizures), Antidepressants.</td>
+            </tr>
+          <tr>
+                <td>Headache, fever, stiff neck, nausea, sensitivity to light, confusion.</td>
+                <td>Meningitis</td>
+                <td>Antibiotics (for bacterial meningitis), Antivirals (for viral meningitis), Corticosteroids.</td>
+            </tr>
+           <tr>
+                <td> Hallucinations, delusions, disorganized speech, lack of motivation, impaired functioning. </td>
+                <td>Schizophrenia</td>
+                <td> Antipsychotics (e.g., Olanzapine, Risperidone, Clozapine).
+</td>
+            </tr>
+          <tr>
+                <td>Involuntary tics (motor and vocal), blinking, head jerking, vocalizations.</td>
+                <td>Tourette Syndrome </td>
+                <td>Tetrabenazine, Clonidine, Antipsychotics (e.g., Aripiprazole).</td>
+            </tr>
+               <tr>
+                <td> Difficulty speaking, understanding speech, reading, and writing due to brain damage (often from stroke). </td>
+                <td>Aphasia </td>
+                <td> No specific medications, but speech therapy and language rehabilitation are key.
+</td>
+            </tr>
+               <tr>
+                <td>Sudden, temporary facial paralysis, weakness on one side of the face.</td>
+                <td>Bell's Palsy </td>
+                <td>Corticosteroids (e.g., Prednisone), Antiviral medications (if a viral cause is suspected). </td>
+            </tr>
+
+               <tr>
+                <td>Severe headache, nausea, vision problems, neck pain, sudden loss of consciousness. </td>
+                <td>Brain Aneurysm </td>
+                <td>Antihypertensives (to lower blood pressure), Pain relievers, Anticonvulsants (for seizures) </td>
+            </tr>
+
+               <tr>
+                <td>Muscle tightness, spasms, difficulty walking, balance problems, delayed motor skills. </td>
+                <td> Cerebral Palsy </td>
+                <td>Baclofen (muscle relaxant), Botox (for spasticity), Anticonvulsants (for seizures). </td>
+            </tr>
+ <tr>
+                <td>Weakness, speech difficulty, vision changes, sudden headache (stroke-like symptoms </td>
+                <td>Cerebrovascular Disease </td>
+                <td>Antiplatelets (e.g., Aspirin), Anticoagulants, Statins (for cholesterol control). </td>
+            </tr>
+ <tr>
+                <td>Headache, dizziness, nausea, confusion, sensitivity to light and noise. </td>
+                <td>Concussion </td>
+                <td> Pain relievers (e.g., Acetaminophen, Ibuprofen), Antiemetics (for nausea), No specific treatment for the concussion itself.
+ </td>
+            </tr>
+<tr>
+                <td>Persistent sadness, loss of interest, fatigue, changes in appetite/sleep, feelings of worthlessness. </td>
+                <td>Depression</td>
+                <td>Antidepressants (e.g., SSRIs, SNRIs like Sertraline, Venlafaxine), Therapy (Cognitive Behavioral Therapy).
+</td>
+            </tr>
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🧠 Get enough sleep to support brain function.</li>
+                <li>🍎 Eat a balanced diet rich in Omega-3 and antioxidants.</li>
+                <li>🏃‍♂ Exercise regularly to improve blood flow to the brain.</li>
+                <li>🧘 Manage stress through meditation, yoga, or deep breathing.</li>
+                <li>🚫 Avoid excessive alcohol, smoking, and drug use.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

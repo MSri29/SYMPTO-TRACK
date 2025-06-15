@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orthopedic - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🦴 Orthopedic - Symptoms & Treatments</h1>
+        <p>Find information on bone and joint-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Joint pain, stiffness</td>
+                <td>Osteoarthritis</td>
+                <td>Pain relievers, Physical therapy</td>
+            </tr>
+            <tr>
+                <td>Back pain, numbness</td>
+                <td>Herniated Disc</td>
+                <td>NSAIDs, Muscle relaxants</td>
+            </tr>
+            <tr>
+                <td>Swelling, joint inflammation</td>
+                <td>Rheumatoid Arthritis</td>
+                <td>DMARDs, Steroids</td>
+            </tr>
+            <tr>
+                <td>Severe bone pain, fractures</td>
+                <td>Osteoporosis</td>
+                <td>Calcium, Vitamin D, Bisphosphonates</td>
+            </tr>
+            <!-- Newly added conditions -->
+            <tr>
+                <td>Knee pain, swelling, locking sensation</td>
+                <td>Meniscus Tear</td>
+                <td>NSAIDs, Arthroscopic surgery</td>
+            </tr>
+            <tr>
+                <td>Shoulder pain, limited arm movement</td>
+                <td>Rotator Cuff Injury</td>
+                <td>Corticosteroid injections, Physical therapy</td>
+            </tr>
+            <tr>
+                <td>Wrist pain, numbness in fingers</td>
+                <td>Carpal Tunnel Syndrome</td>
+                <td>Wrist splints, NSAIDs</td>
+            </tr>
+            <tr>
+                <td>Heel pain, worse in mornings</td>
+                <td>Plantar Fasciitis</td>
+                <td>Orthotics, Stretching exercises</td>
+            </tr>
+            <tr>
+                <td>Elbow pain, weak grip</td>
+                <td>Tennis Elbow</td>
+                <td>Rest, Physical therapy</td>
+            </tr>
+            <tr>
+                <td>Lower back pain radiating to leg</td>
+                <td>Sciatica</td>
+                <td>Muscle relaxants, Epidural injections</td>
+            </tr>
+            <tr>
+                <td>Neck pain, headaches, stiffness</td>
+                <td>Cervical Spondylosis</td>
+                <td>Neck exercises, Pain relievers</td>
+            </tr>
+            <tr>
+                <td>Joint deformity, limited movement</td>
+                <td>Advanced Osteoarthritis</td>
+                <td>Joint replacement surgery</td>
+            </tr>
+            <tr>
+                <td>Bone pain, fatigue, frequent infections</td>
+                <td>Multiple Myeloma</td>
+                <td>Chemotherapy, Immunomodulators</td>
+            </tr>
+            <tr>
+                <td>Joint pain, fatigue, butterfly rash</td>
+                <td>Lupus Arthritis</td>
+                <td>Antimalarials, Immunosuppressants</td>
+            </tr>
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>💪 Maintain a healthy diet rich in Calcium and Vitamin D.</li>
+                <li>🏃 Engage in regular weight-bearing exercises like walking or jogging.</li>
+                <li>⚠ Avoid excessive strain on joints and practice good posture.</li>
+                <li>🚭 Quit smoking and limit alcohol consumption for better bone health.</li>
+                <li>🛏 Use ergonomic furniture to prevent spine-related issues.</li>
+                <li>👟 Wear proper footwear with good arch support.</li>
+                <li>🧘 Practice stretching and flexibility exercises daily.</li>
+                <li>⚖ Maintain a healthy weight to reduce joint stress.</li>
+                <li>🧤 Use joint protection techniques during physical activities.</li>
+                <li>🩺 Get regular check-ups if you have a family history of bone diseases.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

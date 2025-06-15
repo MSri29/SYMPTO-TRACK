@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychiatrist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e1f5fe; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3; /* Deep Blue Theme */
+        }
+        h2 {
+            color: #004380;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🧠 Psychiatrist - Symptoms & Treatments</h1>
+        <p>Find information on mental health symptoms, disorders, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Disorders & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disorder</th>
+                <th>Recommended Treatment</th>
+            </tr>
+            <tr>
+                <td>Persistent sadness, loss of interest</td>
+                <td>Depression</td>
+                <td>Therapy, Antidepressants (SSRIs)</td>
+            </tr>
+            <tr>
+                <td>Excessive worry, restlessness</td>
+                <td>Anxiety Disorder</td>
+                <td>Cognitive Behavioral Therapy (CBT), Anti-anxiety medications</td>
+            </tr>
+            <tr>
+                <td>Mood swings, extreme highs & lows</td>
+                <td>Bipolar Disorder</td>
+                <td>Mood stabilizers, Therapy</td>
+            </tr>
+            <tr>
+                <td>Hallucinations, disorganized thoughts</td>
+                <td>Schizophrenia</td>
+                <td>Antipsychotic medications, Supportive therapy</td>
+            </tr>
+            <tr>
+                <td>Feeling sad or down, low energy, loss of interest</td>
+                <td>Depressive disorders (Major Depressive Disorder, etc.)</td>
+                <td>Antidepressants, psychotherapy (CBT, interpersonal therapy), lifestyle changes.</td>
+            </tr>
+            <tr>
+                <td>Excessive fears or worries, feeling of dread, panic attacks</td>
+                <td>Anxiety disorders (Generalized Anxiety Disorder, Panic Disorder, Phobias)</td>
+                <td>Anti-anxiety medications, antidepressants, psychotherapy (CBT, exposure therapy), relaxation techniques.</td>
+            </tr>
+            <tr>
+                <td>Extreme mood changes (highs and lows), mania, depression</td>
+                <td>Bipolar and related disorders</td>
+                <td>Mood stabilizers, antipsychotic medications, psychotherapy, lifestyle management.</td>
+            </tr>
+            <tr>
+                <td>Detachment from reality, delusions, hallucinations, disorganized thinking</td>
+                <td>Schizophrenia spectrum and other psychotic disorders</td>
+                <td>Antipsychotic medications, psychotherapy, social support.</td>
+            </tr>
+            <tr>
+                <td>Preoccupations or obsessions, repetitive thoughts and actions</td>
+                <td>Obsessive-compulsive and related disorders (OCD, Hoarding Disorder, etc.)</td>
+                <td>Antidepressants, psychotherapy (CBT, exposure and response prevention).</td>
+            </tr>
+            <tr>
+                <td>Trouble coping after stressful events, flashbacks, nightmares, hypervigilance</td>
+                <td>Trauma- and stressor-related disorders (PTSD, Acute Stress Disorder)</td>
+                <td>Psychotherapy (CBT, EMDR), antidepressants, anti-anxiety medications.</td>
+            </tr>
+            <tr>
+                <td>Disrupted sense of self, memory loss, multiple identities</td>
+                <td>Dissociative disorders (Dissociative Identity Disorder, Dissociative Amnesia)</td>
+                <td>Psychotherapy (trauma-focused therapy), addressing underlying trauma.</td>
+            </tr>
+            <tr>
+                <td>Physical symptoms with emotional distress, illness anxiety</td>
+                <td>Somatic symptom and related disorders</td>
+                <td>Psychotherapy (CBT), addressing underlying emotional distress, managing symptoms.</td>
+            </tr>
+            <tr>
+                <td>Disturbances related to eating, extreme weight loss or gain, distorted body image</td>
+                <td>Feeding and eating disorders (Anorexia Nervosa, Binge-Eating Disorder)</td>
+                <td>Psychotherapy (CBT, family-based therapy), nutritional counseling, medical monitoring.</td>
+            </tr>
+            <tr>
+                <td>Inappropriate elimination of urine or stool</td>
+                <td>Elimination disorders (Enuresis)</td>
+                <td>Behavioral therapy, medication (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Problems with sleep, insomnia, sleep apnea</td>
+                <td>Sleep-wake disorders (Insomnia, Sleep Apnea)</td>
+                <td>Behavioral therapy, medication, lifestyle changes, addressing underlying medical conditions.</td>
+            </tr>
+            <tr>
+                <td>Problems with self-control, impulsive behaviors, aggression</td>
+                <td>Disruptive, impulse-control, and conduct disorders</td>
+                <td>Psychotherapy (CBT, anger management), medication (if co-occurring conditions exist).</td>
+            </tr>
+            <tr>
+                <td>Excessive use of substances, addictive behaviors</td>
+                <td>Substance-related and addictive disorders</td>
+                <td>Psychotherapy, medication-assisted treatment, support groups, rehabilitation.</td>
+            </tr>
+            <tr>
+                <td>Decline in cognitive function, memory loss, confusion</td>
+                <td>Neurocognitive disorders (Alzheimer's, TBI-related)</td>
+                <td>Medications (to manage symptoms), supportive care, therapy.</td>
+            </tr>
+            <tr>
+                <td>Lasting patterns of emotional instability, unhealthy behaviors</td>
+                <td>Personality disorders (Borderline, Antisocial, Narcissistic)</td>
+                <td>Psychotherapy (DBT, schema therapy), medication (for co-occurring conditions).</td>
+            </tr>
+            <tr>
+                <td>Sexual interests causing distress or harm</td>
+                <td>Paraphilic disorders</td>
+                <td>Psychotherapy, medication, legal intervention if required.</td>
+            </tr>
+            <tr>
+                <td>Wide range of behavioral or emotional problems in childhood</td>
+                <td>Neurodevelopmental disorders (ADHD, Autism Spectrum Disorder, Learning Disorders)</td>
+                <td>Behavioral therapy, occupational therapy, medication (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Unexplained aches and pains, changes in eating habits, suicidal thinking, withdrawal from activities, confused thinking.</td>
+                <td>General Mental Illness Symptoms</td>
+                <td>Psychotherapy, Medication, lifestyle changes, support groups.</td>
+            </tr>
+            <tr>
+                <td>Distorted body image, preoccupation with perceived flaws</td>
+                <td>Body Dysmorphic Disorder (BDD)</td>
+                <td>CBT, antidepressants (SSRIs).</td>
+            </tr>
+            <tr>
+                <td>Intense emotional instability, impulsive behavior, unstable relationships</td>
+                <td>Borderline Personality Disorder (BPD)</td>
+                <td>Dialectical behavior therapy (DBT), schema therapy, medication (for co-occurring conditions).</td>
+            </tr>
+            <tr>
+                <td>Persistent difficulty discarding possessions, severe distress related to saving items</td>
+                <td>Hoarding Disorder</td>
+                <td>CBT, exposure and response prevention.</td>
+            </tr>
+            <tr>
+                <td>Recurrent pulling out of hair, resulting in hair loss</td>
+                <td>Trichotillomania</td>
+                <td>CBT, habit reversal therapy, medication (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Recurrent skin picking, leading to skin lesions</td>
+                <td>Excoriation (Skin-Picking) Disorder</td>
+                <td>CBT, habit reversal therapy, medication (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Significant distress or impairment related to gender identity</td>
+                <td>Gender Dysphoria</td>
+                <td>Psychotherapy, hormone therapy, surgery (if desired)</td>
+            </tr> 
+            <tr>
+                <td>Recurrent episodes of binge eating followed by compensatory behaviors (e.g., purging)</td>
+                <td>Bulimia Nervosa</td>
+                <td>CBT, nutritional counseling, medical monitoring, antidepressants.</td>
+            </tr>
+            <tr>
+                <td>Recurrent episodes of binge eating without compensatory behaviors</td>
+                <td>Binge Eating Disorder</td>
+                <td>CBT, interpersonal psychotherapy, nutritional counseling, medication (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Persistent patterns of negativistic, hostile, and defiant behavior</td>
+                <td>Oppositional Defiant Disorder (ODD)</td>
+                <td>Parent training, family therapy, CBT.</td>
+            </tr>
+            <tr>
+                <td>Repetitive, involuntary movements and vocalizations (tics)</td>
+                <td>Tourette Syndrome</td>
+                <td>Behavioral therapies (e.g., CBIT), medication (to manage tics).</td>
+            </tr>
+
+        </table>
+
+        <h2>🛡 Mental Health Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🧘‍♂ Practice mindfulness and meditation.</li>
+                <li>💤 Get enough sleep to maintain brain health.</li>
+                <li>🏃‍♂ Exercise regularly to boost mood and reduce stress.</li>
+                <li>🤝 Stay connected with friends and family for emotional support.</li>
+                <li>🍏 Maintain a healthy diet for overall well-being.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

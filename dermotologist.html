@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermatologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🩺 Dermatologist - Symptoms & Treatments</h1>
+        <p>Find information on skin-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Red patches, skin flaking</td>
+                <td>Psoriasis</td>
+                <td>Topical corticosteroids, Vitamin D creams</td>
+            </tr>
+            <tr>
+                <td>Itchy, inflamed skin</td>
+                <td>Eczema</td>
+                <td>Moisturizers, Anti-inflammatory creams</td>
+            </tr>
+            <tr>
+                <td>Acne, pimples, blackheads</td>
+                <td>Acne</td>
+                <td>Salicylic acid, Benzoyl peroxide</td>
+            </tr>
+            <tr>
+                <td>White patches on skin</td>
+                <td>Vitiligo</td>
+                <td>Topical corticosteroids, Phototherapy</td>
+            </tr>
+            <tr>
+                 <td>sudden loss of round or oval patches of hair on the scalp, but any body part may be affected, such as the beard area in men, or the eyebrows or eyelashes.</td>
+                 <td>Alopecia areata</td>
+                 <td>Topical and oral corticosterids, topical immunotheraphy, minoxidil and JAK inhibitors</td>
+            </tr>
+            <tr>
+                <td>Red, dry patches of skin. Rashes that that may ooze, weep clear fluid, or bleed when scratched. Thickening and hardening of the skin.</td>
+                <td>Atopic dermatisis</td>
+                <td>cyclosporine, methotrexate, prednisone, mycophenolate and azathioprine</td>
+           </tr>
+           <tr>
+            <td>a mixture of boil-like lumps, blackheads, cysts, scarring and channels in the skin that leak pus</td>
+            <td>Hidradenitis suppurativa(HS)</td>
+            <td>doxycycline, or Monodox; clindamycin, or Cleocin; rifampin, or Rimactane</td>
+       </tr>
+       <tr>
+        <td>very painful calluses on the soles of the feet</td>
+        <td>Pachyonychia congenital</td>
+        <td>Physical abrasion by trimming or filing the callused areas</td>
+   </tr>
+   <tr>
+    <td>a tingling sensation or a raised sore or blister.</td>
+    <td>Cold sores</td>
+    <td>acyclovir, famciclovir, and valacyclovir</td>
+</tr>
+<tr>
+    <td>a skin rash that's often very itchy, often results from an allergic reaction to food or something you've touched</td>
+    <td>Hives</td>
+    <td>antihistamines</td>
+</tr>
+<tr>
+    <td>skin tightness, rough skin, fine lines or cracks, itchiness</td>
+    <td>Dry skin</td>
+    <td>a thicker moisturizer (Eucerin, Cetaphil, others) or an oil, such as baby oil. </td>
+</tr>
+<tr>
+    <td>thick, raised, scaly patches that are often pink and may flake or form a crust on the surface of the skin.</td>
+    <td>Lupas</td>
+    <td>azathioprine, cyclophosphamide and methotrexate</td>
+</tr>
+<tr>
+    <td>round pink patch, rough border, increasing the size of ring,mildly itchy</td>
+    <td>Ringworm</td>
+    <td>clotrimazole (Lotrimin AF) or terbinafine (Lamisil AT)</td>
+</tr>
+<tr>
+    <td>eye irritation, skin thickening, facial redness, visible blood vessels</td>
+    <td>Rosacea</td>
+    <td>Doxycycline</td>
+</tr>
+<tr>
+    <td>new spot on the skin, changes in size shape and colour of the spot, itchy or painfull,rough and scaly</td>
+    <td>Skin cancer</td>
+    <td>imiquimod (Aldara) cream,cemiplimab (Libtayo),vismodegib (Erivedge)</td>
+</tr>
+<tr>
+    <td>Chickenpox often starts without the classic rash, with a fever, headache, sore throat, or stomachache</td>
+    <td>Chicken pox</td>
+    <td>acyclovir (Sitavig, Zovirax)</td>
+</tr>
+<tr>
+    <td>dry skin, itchiness,rash on swollen skin, thicked skin, darkening of the skin around the eyes</td>
+    <td>Eczema</td>
+    <td>Corticosteroids</td>
+</tr>
+<tr>
+    <td>a small scaly patch, a rash or sore that does not heal, a new mole or an existing mole that suddenly changes in appearance.</td>
+    <td>Melanoma</td>
+    <td>Vemurafenib (Zelboraf), dabrafenib (Tafinlar), and encorafenib (Braftovi) </td>
+</tr>
+<tr>
+    <td>fever, fatigue, skin redness, skin sore, tight glossy stretched appearance of the skin</td>
+    <td>Cellulitis</td>
+    <td>dicloxacillin, amoxicillin, and cephalexin</td>
+</tr>
+        </table>
+
+        <h2>🛡️ Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🌞 Use sunscreen to protect your skin from harmful UV rays.</li>
+                <li>🚿 Keep your skin clean and moisturized daily.</li>
+                <li>💧 Stay hydrated to maintain healthy skin.</li>
+                <li>🍎 Eat a balanced diet rich in vitamins A, C, and E.</li>
+                <li>🚭 Avoid smoking and excessive alcohol, as they damage the skin.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

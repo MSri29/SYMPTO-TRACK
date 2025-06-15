@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker | Sympto Track</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* Reset & Base */
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa; /* very light cool gray */
+            color: #0d1a33; /* deep navy blue */
+            line-height: 1.6;
+        }
+
+        /* Navbar (Copied from index.html) */
+        .navbar {
+            background: linear-gradient(90deg, #244b92, #1a2a66); /* dark navy gradient */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #ffffff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ff6f61; /* coral */
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(13, 26, 51, 0.7), rgba(26, 42, 102, 0.7));
+            color: #fffcfc;
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1.3px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+            font-weight: 800;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* Location Selector */
+        .location-selector {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(145deg, #ffd9d4, #ffb3aa); /* soft coral gradient */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .location-selector h3 {
+            font-size: 1.8rem;
+            color: #0d1a33;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .location-selector .form-control {
+            border-radius: 8px;
+            border: 1px solid #ffb3aa;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Appointment Form */
+        .appointment-form {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(145deg, #ffd9d4, #ffb3aa); /* soft coral gradient */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .appointment-form h2 {
+            font-size: 2.5rem;
+            color: #0d1a33;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .appointment-form .form-control {
+            border-radius: 8px;
+            border: 1px solid #ffb3aa;
+            font-size: 1rem;
+        }
+
+        .appointment-form .cta-btn {
+            background: linear-gradient(135deg, #375cae, #3825cb);
+            color: white;
+            padding: 0.85rem 2.2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .appointment-form .cta-btn:hover {
+            background: linear-gradient(135deg, #ff4b3e, #ff6f61);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        /* Appointment Confirmation */
+        .appointment-confirmation {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(145deg, #d4ffd9, #aaffaa); /* soft green gradient */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease forwards;
+            display: none;
+        }
+
+        .appointment-confirmation h3 {
+            font-size: 2rem;
+            color: #0d1a33;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .appointment-confirmation .confirmation-details {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .appointment-confirmation .detail-row {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .appointment-confirmation .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: #244b92;
+        }
+
+        .appointment-confirmation .detail-value {
+            flex: 1;
+        }
+
+        .appointment-confirmation .print-btn {
+            background: linear-gradient(135deg, #375cae, #3825cb);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .appointment-confirmation .print-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hospitals Section */
+        .hospitals-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hospitals-section h2 {
+            font-size: 2.8rem;
+            color: #0d1a33;
+            margin-bottom: 2rem;
+            letter-spacing: 1.1px;
+            font-weight: 700;
+        }
+
+        .hospital-card {
+            background: linear-gradient(145deg, #ffd9d4, #ffb3aa);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 4px 4px 10px #ff7f72, -4px -4px 10px #ffe9e6;
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
+            cursor:pointer;
+            margin:1rem;
+        }
+
+        .hospital-card:hover {
+            transform: scale(1.1);
+            box-shadow: 6px 6px 15px #ff4b3e, -6px -6px 15px #ffdbd7;
+        }
+
+        .hospital-card h4 {
+            color: #ff4b3e;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hospital-card p {
+            color: #3a3a5c;
+            font-size: 1rem;
+            margin: 0.3rem 0;
+        }
+
+        /* Footer (Copied from index.html) */
+        footer {
+            background: linear-gradient(90deg, #0d1a33, #1a2a66);
+            color: #bd5262;
+            text-align: center;
+            padding: 1.2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.9px;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Animations (Copied from index.html) */
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> Sympto Track</div>
+        <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Medicine</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <section class="header">
+        <h1>Find Hospitals Near You</h1>
+        <p>Select your country and city to locate nearby hospitals and book an appointment.</p>
+    </section>
+
+    <!-- Location Selector -->
+    <section class="location-selector">
+        <h3>Select Your Location</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <select class="form-control" id="countrySelect" onchange="updateCities()">
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-control" id="citySelect" onchange="fetchHospitals()" disabled>
+                    <option value="" disabled selected>Select City</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2>Hospitals Near Your Location</h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section class="appointment-form">
+        <h2>Book an Appointment</h2>
+        <form id="appointmentForm" onsubmit="handleFormSubmission(event)">
+            <div class="mb-3">
+                <label for="patientName" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="patientName" placeholder="Enter your full name" required>
+            </div>
+            <div class="mb-3">
+                <label for="symptomInput" class="form-label">Your Symptoms</label>
+                <textarea class="form-control" id="symptomInput" rows="3" placeholder="Describe your symptoms" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="hospitalSelect" class="form-label">Select Hospital</label>
+                <select class="form-select" id="hospitalSelect" required>
+                    <option value="" disabled selected>Choose a hospital</option>
+                    <!-- Populated dynamically by JavaScript -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="appointmentDate" class="form-label">Appointment Date</label>
+                <input type="date" class="form-control" id="appointmentDate" required>
+            </div>
+            <div class="mb-3">
+                <label for="appointmentTime" class="form-label">Preferred Time</label>
+                <input type="time" class="form-control" id="appointmentTime" required>
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Additional Notes</label>
+                <textarea class="form-control" id="notes" rows="4" placeholder="Any special requests"></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Book Now</button>
+        </form>
+    </section>
+
+    <!-- Appointment Confirmation -->
+    <section class="appointment-confirmation" id="appointmentConfirmation">
+        <h3>Appointment Booked Successfully!</h3>
+        <div class="confirmation-details" id="confirmationDetails">
+            <!-- Details will be inserted here by JavaScript -->
+        </div>
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-print"></i> Print Confirmation
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Sympto Track. Empowering Health, Everywhere.</p>
+    </footer>
+
+    <!-- Leaflet JS and Custom JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize Map
+        let map = L.map('map').setView([28.7041, 77.1025], 13); // Default: Delhi, India
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // City coordinates (expanded for India)
+        const cities = {
+            India: [
+                { name: 'Ahmedabad', coords: [23.0225, 72.5714] },
+                { name: 'Bangalore', coords: [12.9716, 77.5946] },
+                { name: 'Bhopal', coords: [23.2599, 77.4126] },
+                { name: 'Chandigarh', coords: [30.7333, 76.7794] },
+                { name: 'Chennai', coords: [13.0827, 80.2707] },
+                { name: 'Coimbatore', coords: [11.0168, 76.9558] },
+                { name: 'Delhi', coords: [28.7041, 77.1025] },
+                { name: 'Gandhinagar', coords: [23.2156, 72.6369] },
+                { name: 'Guwahati', coords: [26.1445, 91.7362] },
+                { name: 'Hyderabad', coords: [17.3850, 78.4867] },
+                { name: 'Jaipur', coords: [26.9124, 75.7873] },
+                { name: 'Kochi', coords: [9.9312, 76.2673] },
+                { name: 'Kolkata', coords: [22.5726, 88.3639] },
+                { name: 'Lucknow', coords: [26.8467, 80.9462] },
+                { name: 'Mumbai', coords: [19.0760, 72.8777] },
+                { name: 'Nagpur', coords: [21.1458, 79.0882] },
+                { name: 'Patna', coords: [25.5941, 85.1376] },
+                { name: 'Pune', coords: [18.5204, 73.8567] },
+                { name: 'Raipur', coords: [21.2514, 81.6296] },
+                { name: 'Thiruvananthapuram', coords: [8.5241, 76.9366] }
+            ],
+            USA: [
+                { name: 'New York', coords: [40.7128, -74.0060] },
+                { name: 'Los Angeles', coords: [34.0522, -118.2437] },
+                { name: 'Chicago', coords: [41.8781, -87.6298] }
+            ],
+            UK: [
+                { name: 'London', coords: [51.5074, -0.1278] },
+                { name: 'Manchester', coords: [53.4830, -2.2446] }
+            ],
+            Australia: [
+                { name: 'Sydney', coords: [-33.8688, 151.2093] },
+                { name: 'Melbourne', coords: [-37.8136, 144.9631] }
+            ]
+        };
+
+        // Update city dropdown based on country
+        function updateCities() {
+            const country = document.getElementById('countrySelect').value;
+            const citySelect = document.getElementById('citySelect');
+            citySelect.innerHTML = '<option value="" disabled selected>Select City</option>';
+            citySelect.disabled = false;
+
+            if (country && cities[country]) {
+                cities[country].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.name;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                citySelect.disabled = true;
+            }
+        }
+
+        // Fetch hospitals using Overpass API
+        async function fetchHospitals() {
+            const citySelect = document.getElementById('citySelect');
+            const cityName = citySelect.value;
+            if (!cityName) return;
+
+            const city = Object.values(cities).flat().find(c => c.name === cityName);
+            if (!city) return;
+
+            const lat = city.coords[0];
+            const lng = city.coords[1];
+            const overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];node["amenity"="hospital"](around:5000,${lat},${lng});out body;`;
+
+            try {
+                // Clear previous data
+                document.getElementById('hospitalList').innerHTML = '';
+                document.getElementById('hospitalSelect').innerHTML = '<option value="" disabled selected>Choose a hospital</option>';
+                map.eachLayer(layer => {
+                    if (layer instanceof L.Marker) map.removeLayer(layer);
+                });
+
+                // Fetch hospital data
+                const response = await fetch(overpassUrl);
+                const data = await response.json();
+                const hospitals = data.elements.map(node => ({
+                    name: node.tags.name || 'Unknown Hospital',
+                    phone: node.tags.phone || node.tags["contact:phone"] || 'Not available',
+                    website: node.tags.website || node.tags["contact:website"] || 'Not available',
+                    coords: [node.lat, node.lon]
+                }));
+
+                // Populate hospital select dropdown
+                const hospitalSelect = document.getElementById('hospitalSelect');
+                hospitals.forEach(hospital => {
+                    const option = document.createElement('option');
+                    option.value = hospital.name;
+                    option.textContent = hospital.name;
+                    hospitalSelect.appendChild(option);
+                });
+
+                // Populate hospital cards
+                const hospitalList = document.getElementById('hospitalList');
+                hospitals.forEach(hospital => {
+                    const card = document.createElement('div');
+                    card.className = 'col-md-3 hospital-card';
+                    card.innerHTML = `
+                        <h4>${hospital.name}</h4>
+                        <p><i class="fas fa-phone"></i> ${hospital.phone}</p>
+                        <p><i class="fas fa-globe"></i> <a href="${hospital.website}" target="_blank">${hospital.website}</a></p>
+                    `;
+                    card.onclick = () => {
+                        map.setView(hospital.coords, 15);
+                        L.marker(hospital.coords).addTo(map)
+                            .bindPopup(`<b>${hospital.name}</b><br>Phone: ${hospital.phone}<br>Website: <a href="${hospital.website}" target="_blank">Visit</a>`)
+                            .openPopup();
+                    };
+                    hospitalList.appendChild(card);
+                });
+
+                // Add markers to map
+                hospitals.forEach(hospital => {
+                    L.marker(hospital.coords)
+                        .addTo(map)
+                        .bindPopup(`<b>${hospital.name}</b><br>Phone: ${hospital.phone}<br>Website: <a href="${hospital.website}" target="_blank">Visit</a>`);
+                });
+
+                // Adjust map to fit all markers
+                if (hospitals.length > 0) {
+                    const group = new L.featureGroup(hospitals.map(h => L.marker(h.coords)));
+                    map.fitBounds(group.getBounds());
+                } else {
+                    map.setView([lat, lng], 13);
+                    alert('No hospitals found in this area.');
+                }
+            } catch (error) {
+                console.error('Error fetching hospitals:', error);
+                alert('Unable to fetch hospital data. Please try again later.');
+            }
+        }
+
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            const patientName = document.getElementById('patientName').value;
+            const symptoms = document.getElementById('symptomInput').value;
+            const hospital = document.getElementById('hospitalSelect').value;
+            const date = document.getElementById('appointmentDate').value;
+            const time = document.getElementById('appointmentTime').value;
+            const notes = document.getElementById('notes').value;
+
+            if (!patientName || !symptoms || !hospital || !date || !time) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // Format the date for display
+            const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Format the time for display
+            const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+
+            // Generate a random appointment ID
+            const appointmentId = 'APT-' + Math.floor(100000 + Math.random() * 900000);
+
+            // Create confirmation details HTML
+            const confirmationHTML = `
+                <div class="detail-row">
+                    <div class="detail-label">Appointment ID:</div>
+                    <div class="detail-value">${appointmentId}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Patient Name:</div>
+                    <div class="detail-value">${patientName}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Symptoms:</div>
+                    <div class="detail-value">${symptoms}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Hospital:</div>
+                    <div class="detail-value">${hospital}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Date:</div>
+                    <div class="detail-value">${formattedDate}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Time:</div>
+                    <div class="detail-value">${formattedTime}</div>
+                </div>
+                ${notes ? `
+                <div class="detail-row">
+                    <div class="detail-label">Notes:</div>
+                    <div class="detail-value">${notes}</div>
+                </div>
+                ` : ''}
+                <div class="detail-row">
+                    <div class="detail-label">Status:</div>
+                    <div class="detail-value" style="color: green; font-weight: bold;">Confirmed</div>
+                </div>
+            `;
+
+            // Insert confirmation details
+            document.getElementById('confirmationDetails').innerHTML = confirmationHTML;
+            
+            // Show confirmation section
+            document.getElementById('appointmentConfirmation').style.display = 'block';
+            
+            // Scroll to confirmation
+            document.getElementById('appointmentConfirmation').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Reset form
+            document.getElementById('appointmentForm').reset();
+        }
+    </script>
+</body>
+</html>

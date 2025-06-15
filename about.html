@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Sympto Track</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    body {
+      background: #f9fdfc;
+      color: #333;
+    }
+
+    nav {
+      background-color: #2e608e;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #dfffee;
+    }
+
+    .about-section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+
+    .about-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color:  #2e608e;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      background-color: white;
+      border: 1px solid #e0f7f1;
+      border-radius: 10px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color:  #2e608e;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color:  #2e608e;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo"><i class="fas fa-heartbeat"></i> Sympto Track</div>
+  </nav>
+
+  <!-- About Us Content -->
+  <div class="about-section">
+    <h1>About Sympto Track</h1>
+    <p>
+      At Sympto Track, our mission is to empower individuals to take control of their health through intuitive symptom tracking and personalized medical insights.
+      Whether you're managing a chronic condition, researching symptoms, or simply staying proactive, Sympto Track is here to support your journey with technology-driven care.
+    </p>
+
+    <h2>What We Offer</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-stethoscope"></i>
+        <h3>Symptom Tracking</h3>
+        <p>Track and log symptoms with ease using our smart interface tailored for accuracy and speed.</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-notes-medical"></i>
+        <h3>Disease Insights</h3>
+        <p>Receive instant insights and educational resources based on the symptoms you input.</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-user-md"></i>
+        <h3>Find Specialists</h3>
+        <p>Get matched with verified medical professionals based on your health needs.</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Data Privacy</h3>
+        <p>Your health data is safe with us. We prioritize privacy and security in every feature.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sympto Track. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

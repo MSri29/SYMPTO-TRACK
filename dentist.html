@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* Light Blue Background */
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🦷 Dentist - Symptoms & Treatments</h1>
+        <p>Find information on dental symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Tooth pain, sensitivity to hot/cold, visible holes in teeth, bad breath. </td>
+                <td>Tooth Decay (Cavities) </td>
+                <td>  Fluoride treatments: Used to help remineralize enamel and prevent further decay,
+     Antibacterial mouthwash: Chlorhexidine (to reduce bacteria and prevent infection),
+    Pain relievers: Ibuprofen, Acetaminophen (for pain relief),
+    Topical fluoride gel: To prevent further decay.
+</td>
+            </tr>
+            <tr>
+                <td>Red, swollen, bleeding gums, bad breath. </td>
+                <td>Gingivitis (Gum Disease)</td>
+                <td>    Antibacterial mouthwash: Chlorhexidine, Listerine (to control bacteria),
+     Antibiotics (topical or oral): Doxycycline, Amoxicillin (in case of infection),
+     Pain relievers: Ibuprofen (to reduce pain and inflammation).
+ </td>
+            </tr>
+<tr>
+                <td>Bleeding gums, loose teeth, bad breath, gum recession, tooth sensitivity.</td>
+                <td>Periodontitis (Advanced Gum Disease) </td>
+                <td>  Antibiotics: Doxycycline, Metronidazole (oral or topical),
+     Antibacterial mouthwash: Chlorhexidine, Peridex (to reduce infection and bacteria),
+     Pain relievers: Ibuprofen, Acetaminophen (to manage pain).
+</td>
+            </tr>
+<tr>
+                <td>Pain or discomfort when consuming hot, cold, or sugary foods and drinks.</td>
+                <td>Tooth Sensitivity </td>
+                <td>     Desensitizing toothpaste: Sensodyne, Colgate Pro-Relief (reduce sensitivity),
+    fluoride gels: Used to strengthen enamel and reduce sensitivity,
+     Pain relievers: Ibuprofen, Acetaminophen (for occasional pain).
+ </td>
+            </tr>
+<tr>
+                <td>Severe tooth pain, swelling, fever, pus, sensitivity to touch or pressure.</td>
+                <td>Tooth Abscess </td>
+                <td> Antibiotics: Amoxicillin, Metronidazole (to treat infection),
+    Pain relievers: Ibuprofen, Acetaminophen (to relieve pain),
+    Pain gel: Benzocaine (for temporary relief of pain).
+ </td>
+            </tr>
+<tr>
+                <td>Jaw pain, clicking or popping sounds, headaches, difficulty opening the mouth. </td>
+                <td> Temporomandibular Joint Disorder (TMJ)</td>
+                <td>     Muscle relaxants: Cyclobenzaprine (to relax jaw muscles),
+     Anti-inflammatory drugs: Ibuprofen, Naproxen (to reduce pain and inflammation),
+     Pain relievers: Acetaminophen, Ibuprofen (to manage pain),
+     Corticosteroids: Prednisone (for inflammation in severe cases). </td>
+            </tr>
+<tr>
+                <td>White patches on the tongue, cheeks, and roof of the mouth, sore throat, difficulty swallowing.</td>
+                <td>Oral Thrush (Candidiasis)</td>
+                <td>   Antifungal medications: Fluconazole, Nystatin (oral antifungals),
+    Antifungal mouthwash: Clotrimazole (to reduce fungal infection),
+    Topical antifungals: Miconazole (for localized treatment). </td>
+            </tr>
+<tr>
+                <td>Painful ulcers inside the mouth, often with a white or yellow center.</td>
+                <td>Mouth Sores (Canker Sores) </td>
+                <td>    Topical corticosteroids: Hydrocortisone (to reduce inflammation),
+   Oral pain relievers: Benzocaine gel, Lidocaine gel (for pain relief),
+    Mouthwashes: Saltwater rinse or antimicrobial mouthwashes to help with healing.
+</td>
+            </tr>
+<tr>
+                <td>dry mouth, difficulty speaking or swallowing, bad breath, increased risk of cavities.
+ </td>
+                <td>Dry Mouth (Xerostomia)</td>
+                <td>    Artificial saliva: Biotene, SalivaMAX (to moisturize the mouth),
+     Sialogogues: Pilocarpine (stimulates saliva production),
+    sugar-free lozenges: To stimulate saliva flow. </td>
+            </tr>
+<tr>
+                <td> Tooth wear, jaw pain, headaches, clicking in the jaw.</td>
+                <td>Bruxism (Teeth Grinding) </td>
+                <td>    Muscle relaxants: Cyclobenzaprine (to reduce muscle tension),
+     Pain relievers: Ibuprofen, Acetaminophen (for pain relief),
+    Night guards: Dental appliances to prevent tooth grinding at night.
+</td>
+            </tr
+             <tr>
+                <td>Sores or lumps in the mouth, difficulty swallowing, persistent pain in the mouth, bleeding.</td>
+                <td>Oral Cancer</td>
+                <td>Chemotherapy: Cisplatin, Fluorouracil (for treatment),Radiation therapy: For tumor treatment,Pain relievers: Opioids, Acetaminophen (to manage pain).</td>
+            </tr>
+<tr>
+                <td>Severe tooth pain, swelling in the face or gums, fever, bad breath, sensitivity.</td>
+                <td>Dental Abscess</td>
+                <td>      Antibiotics: Amoxicillin, Penicillin (to treat bacterial infection),
+     Pain relievers: Ibuprofen, Acetaminophen (for pain),
+    Antiseptic mouthwashes: Chlorhexidine (to reduce bacteria).
+  
+ </td>
+            </tr>
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🦷 Brush your teeth at least twice a day with fluoride toothpaste.</li>
+                <li>🍎 Maintain a healthy diet and limit sugary foods.</li>
+                <li>🚰 Drink plenty of water to wash away bacteria.</li>
+                <li>🩺 Visit the dentist regularly for check-ups and cleanings.</li>
+                <li>🚭 Avoid smoking and tobacco products to protect your oral health.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

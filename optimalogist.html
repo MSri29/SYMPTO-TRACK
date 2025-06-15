@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ophthalmologist - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e3f2fd; 
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3; 
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>👁 Ophthalmologist - Symptoms & Treatments</h1>
+        <p>Find information on eye-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Red, itchy, watery eyes</td>
+                <td>Conjunctivitis (Pink Eye)</td>
+                <td>Antibiotic or antihistamine eye drops</td>
+            </tr>
+            <tr>
+                <td>Blurred vision, high eye pressure</td>
+                <td>Glaucoma</td>
+                <td>Eye drops (Beta-blockers, Prostaglandins)</td>
+            </tr>
+            <tr>
+                <td>Cloudy vision, difficulty seeing at night</td>
+                <td>Cataracts</td>
+                <td>Surgery (if severe)</td>
+            </tr>
+            <tr>
+                <td>Eye strain, dry eyes</td>
+                <td>Computer Vision Syndrome</td>
+                <td>Artificial tears, screen breaks</td>
+            </tr>
+            <tr>
+                <td>Blood in the visible part of the eye, pain, swelling, discoloration, blurred vision</td>
+                <td>Black Eye (Bruising)</td>
+                <td>Pain relievers, cold compresses, observation.</td>
+            </tr>
+            <tr>
+                <td>Red, swollen, burning, sore eyelids, flakes/crusts at eyelash base</td>
+                <td>Blepharitis</td>
+                <td>Antibiotics, eye drops, warm compresses, eyelid hygiene.</td>
+            </tr>
+            <tr>
+                <td>Red, swollen, itchy, burning eyes, discharge, gritty sensation, light sensitivity, blurry vision</td>
+                <td>Conjunctivitis ("Pink Eye")</td>
+                <td>Antibiotic eye drops (bacterial), antiviral medication (viral), antihistamines (allergic), artificial tears.</td>
+            </tr>
+            <tr>
+                <td>Severe pain, tearing, light sensitivity, blurred vision, bleeding, foreign body sensation</td>
+                <td>Corneal Laceration</td>
+                <td>Surgery to close the cut, antibiotics, pain relievers</td>
+            </tr>
+            <tr>
+                <td>Redness, severe pain, foreign body sensation, tearing, discharge, blurred vision, light sensitivity, white spot on cornea, swollen eyelids</td>
+                <td>Corneal Ulcer (Keratitis)</td>
+                <td>Antibiotic, antifungal, or antiviral eye drops, pain relievers.</td>
+            </tr>
+            <tr>
+                <td>Reduced vision, eye pain, light sensitivity, tearing, discharge</td>
+                <td>Fungal Keratitis</td>
+                <td>Antifungal medications (topical or oral).</td>
+            </tr>
+            <tr>
+                <td>Pain, redness, rash, blurred vision, tearing, discharge, light sensitivity</td>
+                <td>Herpes Keratitis</td>
+                <td>Antiviral medications (topical or oral).</td>
+            </tr>
+            <tr>
+                <td>Bleeding in the front of the eye, light sensitivity, eye pain, blurry vision</td>
+                <td>Hyphema</td>
+                <td>Eye drops (to reduce swelling and pressure), rest, monitoring by an ophthalmologist.</td>
+            </tr>
+            <tr>
+                <td>Blurred/double vision, bruising, swelling, numbness, blood in eye, difficulty moving eye, flattened cheek, bulging/sunken eyeballs, intense cheek pain</td>
+                <td>Orbital Fracture</td>
+                <td>Surgery (in severe cases), pain relievers, observation.</td>
+            </tr>
+            <tr>
+                <td>Red blood spots on the white of the eye</td>
+                <td>Subconjunctival Hemorrhage</td>
+                <td>Artificial tears (if needed), usually heals on its own.</td>
+            </tr>
+            <tr>
+                <td>Red, swollen, itchy eyes, burning/tearing, light sensitivity</td>
+                <td>Eye Allergies (Allergic Conjunctivitis)</td>
+                <td>Artificial tears, decongestants, antihistamine/mast-cell stabilizers, steroid eye drops.</td>
+            </tr>
+            <tr>
+                <td>Cloudy vision, glare, faded colors, difficulty with night vision</td>
+                <td>Cataracts</td>
+                <td>Surgery to remove the cloudy lens and replace it with an artificial lens.</td>
+            </tr>
+            <tr>
+                <td>Gradual peripheral vision loss, eye pain, headaches, blurred vision</td>
+                <td>Glaucoma</td>
+                <td>Eye drops, laser treatment, or surgery to lower eye pressure</td>
+            </tr>
+            <tr>
+                <td>Blurred central vision, distorted vision, difficulty recognizing faces</td>
+                <td>Age-related Macular Degeneration (AMD)</td>
+                <td>Anti-VEGF injections, laser therapy, vitamin supplements.</td>
+            </tr>
+            <tr>
+                <td>Fluctuating blurred vision, double vision, eye pain, redness, light sensitivity</td>
+                <td>Uveitis</td>
+                <td>Corticosteroid eye drops, oral corticosteroids, immunosuppressants.</td>
+            </tr>
+            <tr>
+                <td>Dry, gritty, burning eyes, blurred vision, light sensitivity</td>
+                <td>Dry Eye Syndrome</td>
+                <td>Artificial tears, lubricating eye ointments, prescription eye drops, punctal plugs.</td>
+            </tr>
+            <tr>
+                <td>Distorted central vision, blurry vision, dark or blind spots</td>
+                <td>Macular Degeneration (AMD)</td>
+                <td>Anti-VEGF injections, laser therapy, vitamin supplements.</td>
+            </tr>
+            <tr>
+                <td>Blurred vision, double vision, eye pain, vision loss</td>
+                <td>Optic Neuritis</td>
+                <td>Corticosteroids, treatment of underlying conditions (e.g., multiple sclerosis).</td>
+            </tr>
+            <tr>
+                <td>Eye pain, headache, nausea, vomiting, blurred vision, halos</td>
+                <td>Acute Angle-Closure Glaucoma</td>
+                <td>Emergency medical treatment to rapidly lower eye pressure, laser iridotomy, medications.</td>
+            </tr>
+            <tr>
+                <td>Distorted vision, especially straight lines appearing wavy, blurry vision</td>
+                <td>Macular Edema</td>
+                <td>Treating the underlying cause (e.g., diabetes), anti-VEGF injections, corticosteroids.</td>
+            </tr>
+            <tr>
+                <td>Double vision, eye misalignment, loss of depth perception</td>
+                <td>Strabismus (crossed eyes)</td>
+                <td>Eye patches, eyeglasses, eye exercises, surgery.</td>
+            </tr>
+           <tr>
+            <td>Reduced vision in one eye, often detected in childhood</td>
+            <td>Amblyopia (lazy eye)</td>
+            <td>Eye patches, eyeglasses, vision therapy</td>
+           </tr>
+
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🕶 Wear sunglasses to protect against UV rays.</li>
+                <li>💧 Use artificial tears if your eyes feel dry.</li>
+                <li>💻 Follow the 20-20-20 rule to reduce eye strain.</li>
+                <li>🥦 Eat foods rich in Vitamin A for good vision.</li>
+                <li>👀 Get regular eye check-ups to detect issues early.</li>
+            </ul>
+        </div>
+        <a href="login.html">
+  <button id="medicine">Find Medicine</button>
+</a>
+
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

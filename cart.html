@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Sympto Track</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #f5f5f5; color: #333; }
+    nav {
+      background-color: #2c3e50; color: white;
+      padding: 1rem 2rem; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin-left: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; transition: color 0.3s; }
+    nav ul li a:hover { color: #3498db; }
+    .cart-icon {
+      position: relative; display: flex; align-items: center;
+      padding: 0.5rem; color: white; text-decoration: none;
+    }
+    .cart-count {
+      position: absolute; top: -8px; right: -8px;
+      background-color: #e74c3c; color: white;
+      border-radius: 50%; width: 20px; height: 20px;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 0.7rem;
+    }
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { text-align: center; margin-bottom: 2rem; color: #2c3e50; }
+    .cart-empty {
+      text-align: center; padding: 2rem; background-color: white;
+      border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      padding: 0.5rem 1rem; border: none; border-radius: 4px;
+      cursor: pointer; font-weight: bold; transition: all 0.3s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary { background-color: #3498db; color: white; }
+    .btn-primary:hover { background-color: #2980b9; }
+    .cart-items {
+      background-color: white; border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .cart-item {
+      display: flex; align-items: center; padding: 1rem 0;
+      border-bottom: 1px solid #ecf0f1;
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-image {
+      width: 80px; height: 80px; background-color: #ecf0f1;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 1rem; border-radius: 4px;
+    }
+    .cart-item-image img {
+      max-width: 80%; max-height: 80%; object-fit: contain;
+    }
+    .cart-item-details { flex-grow: 1; }
+    .cart-item-name { font-weight: bold; margin-bottom: 0.5rem; }
+    .cart-item-price { color: #e74c3c; font-weight: bold; }
+    .cart-item-remove {
+      color: #e74c3c; cursor: pointer; background: none;
+      border: none; font-size: 1.2rem;
+    }
+    .cart-summary {
+      background-color: white; border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 1.5rem;
+    }
+    .cart-summary-row {
+      display: flex; justify-content: space-between; margin-bottom: 1rem;
+    }
+    .cart-summary-total {
+      font-weight: bold; font-size: 1.2rem;
+      border-top: 1px solid #ecf0f1;
+      padding-top: 1rem; margin-top: 1rem;
+    }
+    .btn-checkout {
+      width: 100%; padding: 1rem;
+      background-color: #4531ad; color: white; font-size: 1.1rem;
+      margin-top: 1.5rem;
+    }
+    .btn-checkout:hover { background-color: #87c1e3; }
+    .quantity-control {
+      display: flex; align-items: center; margin-top: 0.5rem;
+    }
+    .quantity-btn {
+      width: 25px; height: 25px; background-color: #ecf0f1;
+      border: none; border-radius: 4px; cursor: pointer;
+    }
+    .quantity-input {
+      width: 40px; text-align: center; margin: 0 0.5rem;
+    }
+    footer {
+      background-color: #2c3e50; color: white;
+      text-align: center; padding: 1.5rem; margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Sympto Track</div>
+    <ul>
+      <li><a href="medicine.html">Medicine</a></li>
+      <li>
+        <a href="cart.html" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </li>
+      <li><a href="login.html" class="login-btn">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Your Shopping Cart</h1>
+    <div id="cart-content">
+      <div class="cart-empty">
+        <p>Your cart is currently empty</p>
+        <a href="medicine.html" class="btn btn-primary">Browse Medicines</a>
+      </div>
+    </div>
+
+    <div id="cart-summary" style="display: none;">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal">₹0.00</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Shipping:</span>
+          <span>₹50.00</span>
+        </div>
+        <div class="cart-summary-row cart-summary-total">
+          <span>Total:</span>
+          <span id="cart-total">₹50.00</span>
+        </div>
+        <button class="btn btn-checkout">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sympto Track. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let cartCount = 0;
+
+    function updateCartStorage() {
+      cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      localStorage.setItem('cartCount', cartCount);
+      document.querySelector('.cart-count').textContent = cartCount;
+    }
+
+    function renderCart() {
+      const cartContent = document.getElementById('cart-content');
+      const cartSummary = document.getElementById('cart-summary');
+
+      if (cartItems.length === 0) {
+        cartContent.innerHTML = `
+          <div class="cart-empty">
+            <p>Your cart is currently empty</p>
+            <a href="medicine.html" class="btn btn-primary">Browse Medicines</a>
+          </div>
+        `;
+        cartSummary.style.display = 'none';
+        return;
+      }
+
+      let cartHTML = '<div class="cart-items">';
+      let subtotal = 0;
+
+      cartItems.forEach((item, index) => {
+        subtotal += item.price * item.quantity;
+
+        cartHTML += `
+          <div class="cart-item" data-index="${index}">
+            <div class="cart-item-image">
+              <img src="https://via.placeholder.com/150?text=${encodeURIComponent(item.name.substring(0,2))}" alt="${item.name}">
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">₹${item.price.toFixed(2)}</div>
+              <div class="quantity-control">
+                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantityInput(${index}, this.value)">
+                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+              </div>
+            </div>
+            <button class="cart-item-remove" onclick="removeItem(${index})">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      cartHTML += '</div>';
+      cartContent.innerHTML = cartHTML;
+      cartSummary.style.display = 'block';
+
+      document.getElementById('cart-subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+      document.getElementById('cart-total').textContent = `₹${(subtotal + 50).toFixed(2)}`;
+    }
+
+    function updateQuantity(index, change) {
+      let newQuantity = cartItems[index].quantity + change;
+      if (newQuantity < 1) return;
+      cartItems[index].quantity = newQuantity;
+      updateCartStorage();
+      renderCart();
+    }
+
+    function updateQuantityInput(index, value) {
+      const qty = parseInt(value) || 1;
+      cartItems[index].quantity = qty < 1 ? 1 : qty;
+      updateCartStorage();
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      updateCartStorage();
+      renderCart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      cartItems = cartItems.map(item => ({ ...item, quantity: item.quantity || 1 }));
+      updateCartStorage();
+      renderCart();
+    });
+
+    document.querySelector('.btn-checkout')?.addEventListener('click', () => {
+      window.location.href = 'checkout.html';
+    });
+  </script>
+</body>
+</html>

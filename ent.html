@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENT - Symptoms & Treatments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e6f7ff; 
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3; 
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            margin: 15px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f8ff;
+        }
+        .prevention-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f2ff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .prevention-box ul {
+            padding-left: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #5cb2f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>👂👃🗣 ENT - Symptoms & Treatments</h1>
+        <p>Find information on ear, nose, and throat-related symptoms, diseases, treatments, and prevention.</p>
+
+        <h2>🔍 Search by Symptom</h2>
+        <input type="text" class="search-box" placeholder="Type a symptom..." onkeyup="searchSymptom()">
+
+        <h2>📝 Symptoms, Diseases & Treatments</h2>
+        <table id="diseaseTable">
+            <tr>
+                <th>Symptoms</th>
+                <th>Disease</th>
+                <th>Recommended Medicine</th>
+            </tr>
+            <tr>
+                <td>Ear pain, fluid discharge</td>
+                <td>Ear Infection (Otitis Media)</td>
+                <td>Antibiotics, Pain relievers</td>
+            </tr>
+            <tr>
+                <td>Ear pain, tugging/pulling, trouble sleeping, crying, fussiness, fever, headache, loss of appetite.</td>
+                <td>Acute otitis media (AOM)</td>
+                <td>Pain relievers (acetaminophen, ibuprofen), antibiotics (if bacterial), observation (in some cases).</td>
+            </tr>
+            <tr>
+                <td>Trouble hearing</td>
+                <td>Otitis media with effusion (OME), Chronic otitis media with effusion (COME), Glue ear</td>
+                <td>Observation, decongestants, nasal corticosteroids, in severe cases, ear tubes.</td>
+            </tr>
+            <tr>
+                <td>Hearing loss</td>
+                <td>Otosclerosis</td>
+                <td>Hearing aids, surgery (stapedectomy).</td>
+            </tr>
+            <tr>
+                <td>Vertigo, dizziness, tinnitus, pressure/fullness</td>
+                <td>Ménière's disease</td>
+                <td>Medications for motion sickness, diuretics, lifestyle changes, therapies, in severe cases surgery.</td>
+            </tr>
+            <tr>
+                <td>Redness, itching, discharge</td>
+                <td>Swimmer's ear</td>
+                <td>Antibiotic or antifungal ear drops, pain relievers.</td>
+            </tr>
+            <tr>
+                <td>Runny nose, congestion</td>
+                <td>Sinusitis</td>
+                <td>Decongestants, Nasal sprays</td>
+            </tr>
+            <tr>
+                <td>Stuffy nose, decreased smell/taste, postnasal drip</td>
+                <td>Sinus infection, Nasal polyps</td>
+                <td>Decongestants, nasal corticosteroids, saline nasal spray, antibiotics (if bacterial), surgery (for polyps).</td>
+            </tr>
+            <tr>
+                <td>Runny nose, sneezing</td>
+                <td>Allergic rhinitis</td>
+                <td>Antihistamines, nasal corticosteroids, decongestants, allergy shots.</td>
+            </tr>
+            <tr>
+                <td>Noisy breathing, snoring</td>
+                <td>Deviated septum</td>
+                <td>Decongestants, nasal corticosteroids, surgery (septoplasty).</td>
+            </tr>
+            <tr>
+                <td>Epistaxis (nosebleeds)</td>
+                <td>Deviated septum, Epistaxis</td>
+                <td>Direct pressure, nasal sprays, cautery, packing, embolization, surgery.</td>
+            </tr>
+            <tr>
+                <td>Physical obstructions, anatomic deformities, masses or growths, loss of smell or taste</td>
+                <td>Loss of smell or taste</td>
+                <td>Treating the underlying cause, surgery (if needed).</td>
+            </tr>
+            <tr>
+                <td>Tumors</td>
+                <td>Sinus/Nasal Tumors</td>
+                <td>Surgery, radiation, chemotherapy (depending on tumor type).</td>
+            </tr>
+            <tr>
+                <td>White patches, soreness</td>
+                <td>Thrush</td>
+                <td>Antifungal medications (oral or topical)</td>
+            </tr>
+            <tr>
+                <td>Black, hairy appearance</td>
+                <td>Black hairy tongue</td>
+                <td>Improved oral hygiene (brushing, tongue scraping).</td>
+            </tr>
+            <tr>
+                <td>Lacy, white patches or red shiny bumps</td>
+                <td>Lichen planus</td>
+                <td>Topical or oral corticosteroids, immunosuppressants.</td>
+            </tr>
+            <tr>
+                <td>Map-like appearance, raised and lowered spots</td>
+                <td>Geographic tongue</td>
+                <td>Pain relievers (if painful), no specific treatment usually needed</td>
+            </tr>
+            <tr>
+                <td>Smooth, glossy red appearance</td>
+                <td>Smooth tongue</td>
+                <td>Vitamin supplements (if deficiency), treating underlying conditions.</td>
+            </tr>
+            <tr>
+                <td>Enlarged tongue, teeth imprints</td>
+                <td>Macroglossia</td>
+                <td>Treating underlying conditions.</td>
+            </tr>
+            <tr>
+                <td>Soreness, pain, lumps, red or white patches</td>
+                <td>Soreness, Oral Cancer</td>
+                <td>Pain relievers, treatment of the underlying cause. Oral cancer treatment, surgery, radiation, chemotherapy.</td>
+            </tr>
+            <tr>
+                <td>Sore throat, difficulty swallowing</td>
+                <td>Tonsillitis</td>
+                <td>Antibiotics, Anti-inflammatory medications</td>
+            </tr>
+            <tr>
+                <td>Hoarseness, dry throat</td>
+                <td>Laryngitis</td>
+                <td>Rest, Hydration, Lozenges</td>
+            </tr>
+        </table>
+
+        <h2>🛡 Prevention Tips</h2>
+        <div class="prevention-box">
+            <ul>
+                <li>🚿 Maintain good hygiene to prevent infections.</li>
+                <li>💧 Stay hydrated to keep throat and sinuses healthy.</li>
+                <li>🚫 Avoid smoking and exposure to allergens.</li>
+                <li>🎧 Limit headphone usage and keep volume low.</li>
+                <li>🌬 Use a humidifier to prevent dry throat and congestion.</li>
+            </ul>
+        </div>
+        <button id="medicine">Find Medicine</button>
+    </div>
+
+    <script>
+        function searchSymptom() {
+            let input = document.querySelector(".search-box").value.toLowerCase();
+            let rows = document.querySelectorAll("#diseaseTable tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let symptomsText = rows[i].cells[0].innerText.toLowerCase();
+                if (symptomsText.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
